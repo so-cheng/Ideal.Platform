@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ideal.Platform.Common\Ideal.Platform.Common.csproj" />
+    <ProjectReference Include="..\Ideal.Platform.Model\Ideal.Platform.Model.csproj" />
+    <ProjectReference Include="..\..\Ideal\Ideal.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,12 @@
+/Users/songcheng/Ideal.Platform/Ideal.Platform.DAO/bin/Debug/net6.0/Ideal.Platform.DAO.deps.json
+/Users/songcheng/Ideal.Platform/Ideal.Platform.DAO/bin/Debug/net6.0/Ideal.Platform.DAO.dll
+/Users/songcheng/Ideal.Platform/Ideal.Platform.DAO/bin/Debug/net6.0/Ideal.Platform.DAO.pdb
+/Users/songcheng/Ideal.Platform/Ideal.Platform.DAO/obj/Debug/net6.0/Ideal.Platform.DAO.csproj.AssemblyReference.cache
+/Users/songcheng/Ideal.Platform/Ideal.Platform.DAO/obj/Debug/net6.0/Ideal.Platform.DAO.GeneratedMSBuildEditorConfig.editorconfig
+/Users/songcheng/Ideal.Platform/Ideal.Platform.DAO/obj/Debug/net6.0/Ideal.Platform.DAO.AssemblyInfoInputs.cache
+/Users/songcheng/Ideal.Platform/Ideal.Platform.DAO/obj/Debug/net6.0/Ideal.Platform.DAO.AssemblyInfo.cs
+/Users/songcheng/Ideal.Platform/Ideal.Platform.DAO/obj/Debug/net6.0/Ideal.Platform.DAO.csproj.CoreCompileInputs.cache
+/Users/songcheng/Ideal.Platform/Ideal.Platform.DAO/obj/Debug/net6.0/Ideal.Platform.DAO.dll
+/Users/songcheng/Ideal.Platform/Ideal.Platform.DAO/obj/Debug/net6.0/refint/Ideal.Platform.DAO.dll
+/Users/songcheng/Ideal.Platform/Ideal.Platform.DAO/obj/Debug/net6.0/Ideal.Platform.DAO.pdb
+/Users/songcheng/Ideal.Platform/Ideal.Platform.DAO/obj/Debug/net6.0/ref/Ideal.Platform.DAO.dll

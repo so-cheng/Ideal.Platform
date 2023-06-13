@@ -1,0 +1,14 @@
+/Users/songcheng/Ideal.Platform/Ideal.Platform.Model/bin/Debug/net6.0/Ideal.Platform.Model.deps.json
+/Users/songcheng/Ideal.Platform/Ideal.Platform.Model/bin/Debug/net6.0/Ideal.Platform.Model.dll
+/Users/songcheng/Ideal.Platform/Ideal.Platform.Model/bin/Debug/net6.0/Ideal.Platform.Model.pdb
+/Users/songcheng/Ideal.Platform/Ideal.Platform.Model/bin/Debug/net6.0/Ideal.dll
+/Users/songcheng/Ideal.Platform/Ideal.Platform.Model/obj/Debug/net6.0/Ideal.Platform.Model.csproj.AssemblyReference.cache
+/Users/songcheng/Ideal.Platform/Ideal.Platform.Model/obj/Debug/net6.0/Ideal.Platform.Model.GeneratedMSBuildEditorConfig.editorconfig
+/Users/songcheng/Ideal.Platform/Ideal.Platform.Model/obj/Debug/net6.0/Ideal.Platform.Model.AssemblyInfoInputs.cache
+/Users/songcheng/Ideal.Platform/Ideal.Platform.Model/obj/Debug/net6.0/Ideal.Platform.Model.AssemblyInfo.cs
+/Users/songcheng/Ideal.Platform/Ideal.Platform.Model/obj/Debug/net6.0/Ideal.Platform.Model.csproj.CoreCompileInputs.cache
+/Users/songcheng/Ideal.Platform/Ideal.Platform.Model/obj/Debug/net6.0/Ideal.Platform.Model.csproj.CopyComplete
+/Users/songcheng/Ideal.Platform/Ideal.Platform.Model/obj/Debug/net6.0/Ideal.Platform.Model.dll
+/Users/songcheng/Ideal.Platform/Ideal.Platform.Model/obj/Debug/net6.0/refint/Ideal.Platform.Model.dll
+/Users/songcheng/Ideal.Platform/Ideal.Platform.Model/obj/Debug/net6.0/Ideal.Platform.Model.pdb
+/Users/songcheng/Ideal.Platform/Ideal.Platform.Model/obj/Debug/net6.0/ref/Ideal.Platform.Model.dll
