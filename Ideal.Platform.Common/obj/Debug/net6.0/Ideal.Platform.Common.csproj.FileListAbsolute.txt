@@ -2,6 +2,7 @@
 /Users/songcheng/Ideal.Platform/Ideal.Platform.Common/bin/Debug/net6.0/Ideal.Platform.Common.dll
 /Users/songcheng/Ideal.Platform/Ideal.Platform.Common/bin/Debug/net6.0/Ideal.Platform.Common.pdb
 /Users/songcheng/Ideal.Platform/Ideal.Platform.Common/bin/Debug/net6.0/Ideal.dll
+/Users/songcheng/Ideal.Platform/Ideal.Platform.Common/bin/Debug/net6.0/Ideal.pdb
 /Users/songcheng/Ideal.Platform/Ideal.Platform.Common/obj/Debug/net6.0/Ideal.Platform.Common.csproj.AssemblyReference.cache
 /Users/songcheng/Ideal.Platform/Ideal.Platform.Common/obj/Debug/net6.0/Ideal.Platform.Common.GeneratedMSBuildEditorConfig.editorconfig
 /Users/songcheng/Ideal.Platform/Ideal.Platform.Common/obj/Debug/net6.0/Ideal.Platform.Common.AssemblyInfoInputs.cache

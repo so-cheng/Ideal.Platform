@@ -743,6 +743,7 @@
       },
       "Ideal.Platform.Common/1.0.0": {
         "dependencies": {
+          "Ideal": "1.0.0",
           "Newtonsoft.Json": "13.0.2"
         },
         "runtime": {

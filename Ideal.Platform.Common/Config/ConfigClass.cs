@@ -1,4 +1,5 @@
-﻿using Ideal.Ideal.Redis;
+﻿using Ideal.Ideal.DB.Base;
+using Ideal.Ideal.Redis;
 using Ideal.Platform.Common.Data;
 using Newtonsoft.Json.Linq;
 using System;
@@ -29,6 +30,7 @@ namespace Ideal.Platform.Common.Config
             JObject appsettingsJObject = JObject.Parse(appsettingsJsonstr);
             SqlConnectionStr = appsettingsJObject["SqlConnection"].ToString();
             RedisConnectionStr = appsettingsJObject["RedisConnection"].ToString();
+            BaseControl.SetConnton(ConfigClass.SqlConnectionStr);
             //SetRedis();
         }
 
