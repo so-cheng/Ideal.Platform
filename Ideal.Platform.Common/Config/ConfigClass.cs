@@ -30,7 +30,8 @@ namespace Ideal.Platform.Common.Config
             JObject appsettingsJObject = JObject.Parse(appsettingsJsonstr);
             SqlConnectionStr = appsettingsJObject["SqlConnection"].ToString();
             RedisConnectionStr = appsettingsJObject["RedisConnection"].ToString();
-            BaseControl.SetConnton(ConfigClass.SqlConnectionStr);
+            BaseControl.constr_str = SqlConnectionStr;
+            RedisHelper.connection = RedisConnectionStr;
             //SetRedis();
         }
 
