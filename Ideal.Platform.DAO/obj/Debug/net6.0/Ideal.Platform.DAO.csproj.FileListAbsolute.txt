@@ -10,3 +10,15 @@
 /Users/songcheng/Ideal.Platform/Ideal.Platform.DAO/obj/Debug/net6.0/refint/Ideal.Platform.DAO.dll
 /Users/songcheng/Ideal.Platform/Ideal.Platform.DAO/obj/Debug/net6.0/Ideal.Platform.DAO.pdb
 /Users/songcheng/Ideal.Platform/Ideal.Platform.DAO/obj/Debug/net6.0/ref/Ideal.Platform.DAO.dll
+E:\Git\Ideal.Platform\Ideal.Platform.DAO\bin\Debug\net6.0\Ideal.Platform.DAO.deps.json
+E:\Git\Ideal.Platform\Ideal.Platform.DAO\bin\Debug\net6.0\Ideal.Platform.DAO.dll
+E:\Git\Ideal.Platform\Ideal.Platform.DAO\bin\Debug\net6.0\Ideal.Platform.DAO.pdb
+E:\Git\Ideal.Platform\Ideal.Platform.DAO\obj\Debug\net6.0\Ideal.Platform.DAO.csproj.AssemblyReference.cache
+E:\Git\Ideal.Platform\Ideal.Platform.DAO\obj\Debug\net6.0\Ideal.Platform.DAO.GeneratedMSBuildEditorConfig.editorconfig
+E:\Git\Ideal.Platform\Ideal.Platform.DAO\obj\Debug\net6.0\Ideal.Platform.DAO.AssemblyInfoInputs.cache
+E:\Git\Ideal.Platform\Ideal.Platform.DAO\obj\Debug\net6.0\Ideal.Platform.DAO.AssemblyInfo.cs
+E:\Git\Ideal.Platform\Ideal.Platform.DAO\obj\Debug\net6.0\Ideal.Platform.DAO.csproj.CoreCompileInputs.cache
+E:\Git\Ideal.Platform\Ideal.Platform.DAO\obj\Debug\net6.0\Ideal.Platform.DAO.dll
+E:\Git\Ideal.Platform\Ideal.Platform.DAO\obj\Debug\net6.0\refint\Ideal.Platform.DAO.dll
+E:\Git\Ideal.Platform\Ideal.Platform.DAO\obj\Debug\net6.0\Ideal.Platform.DAO.pdb
+E:\Git\Ideal.Platform\Ideal.Platform.DAO\obj\Debug\net6.0\ref\Ideal.Platform.DAO.dll

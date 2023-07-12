@@ -3984,32 +3984,34 @@
     ]
   },
   "packageFolders": {
-    "/Users/songcheng/.nuget/packages/": {}
+    "C:\\Users\\理想再见\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/songcheng/Ideal.Platform/Ideal.Platform.Common/Ideal.Platform.Common.csproj",
+      "projectUniqueName": "E:\\Git\\Ideal.Platform\\Ideal.Platform.Common\\Ideal.Platform.Common.csproj",
       "projectName": "Ideal.Platform.Common",
-      "projectPath": "/Users/songcheng/Ideal.Platform/Ideal.Platform.Common/Ideal.Platform.Common.csproj",
-      "packagesPath": "/Users/songcheng/.nuget/packages/",
-      "outputPath": "/Users/songcheng/Ideal.Platform/Ideal.Platform.Common/obj/",
+      "projectPath": "E:\\Git\\Ideal.Platform\\Ideal.Platform.Common\\Ideal.Platform.Common.csproj",
+      "packagesPath": "C:\\Users\\理想再见\\.nuget\\packages\\",
+      "outputPath": "E:\\Git\\Ideal.Platform\\Ideal.Platform.Common\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/songcheng/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\理想再见\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/Users/songcheng/Ideal/Ideal.csproj": {
-              "projectPath": "/Users/songcheng/Ideal/Ideal.csproj"
+            "E:\\Git\\Ideal\\Ideal.csproj": {
+              "projectPath": "E:\\Git\\Ideal\\Ideal.csproj"
             }
           }
         }
@@ -4045,7 +4047,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }
