@@ -29,10 +29,7 @@ namespace Ideal.Platform.Service
             ReturnSummary returnSummary = new ReturnSummary();
             Ideal_PostBLL bll = new Ideal_PostBLL();
             flag = bll.InserPost(model, out code, out msg);
-            if (flag)
-            {
-                RedisHelper.SetValue((int)RedisType.Post, model.PostID, JsonConvert.SerializeObject(model));
-            }
+           
             returnSummary.StatusCode = code;
             returnSummary.IsSuccess = flag;
             returnSummary.Message = msg;
@@ -51,10 +48,7 @@ namespace Ideal.Platform.Service
             ReturnSummary returnSummary = new ReturnSummary();
             Ideal_PostBLL bll = new Ideal_PostBLL();
             flag = bll.UpdatePost(model, out code, out msg);
-            if (flag)
-            {
-                RedisHelper.UpdateValue((int)RedisType.Post, model.PostID, JsonConvert.SerializeObject(model));
-            }
+            
             returnSummary.StatusCode = code;
             returnSummary.IsSuccess = flag;
             returnSummary.Message = msg;
@@ -73,10 +67,7 @@ namespace Ideal.Platform.Service
             ReturnSummary returnSummary = new ReturnSummary();
             Ideal_PostBLL bll = new Ideal_PostBLL();
             flag = bll.DeletePost(PostID, out code, out msg);
-            if (flag)
-            {
-                RedisHelper.DeleteKey((int)RedisType.Post, PostID);
-            }
+            
             returnSummary.StatusCode = code;
             returnSummary.IsSuccess = flag;
             returnSummary.Message = msg;

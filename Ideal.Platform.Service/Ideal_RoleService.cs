@@ -29,10 +29,7 @@ namespace Ideal.Platform.Service
             string msg = string.Empty;
             Ideal_RoleBLL ideal_CompanyBLL = new Ideal_RoleBLL();
             flag = ideal_CompanyBLL.InsertRole(model, out code, out msg);
-            if (flag)
-            {
-                RedisHelper.SetValue((int)RedisType.Role, model.RoleID, JsonConvert.SerializeObject(model));
-            }
+           
             ReturnSummary rs = new ReturnSummary()
             {
                 StatusCode = code,
@@ -53,10 +50,7 @@ namespace Ideal.Platform.Service
             string msg = string.Empty;
             Ideal_RoleBLL ideal_CompanyBLL = new Ideal_RoleBLL();
             flag = ideal_CompanyBLL.UpdateRole(model, out code, out msg);
-            if (flag)
-            {
-                RedisHelper.UpdateValue((int)RedisType.Role, model.RoleID, JsonConvert.SerializeObject(model));
-            }
+           
             ReturnSummary rs = new ReturnSummary()
             {
                 StatusCode = code,
@@ -77,10 +71,7 @@ namespace Ideal.Platform.Service
             string msg = string.Empty;
             Ideal_RoleBLL ideal_CompanyBLL = new Ideal_RoleBLL();
             flag = ideal_CompanyBLL.DeleteRole(RoleID, out code, out msg);
-            if (flag)
-            {
-                RedisHelper.DeleteKey((int)RedisType.Role, RoleID);
-            }
+           
             ReturnSummary rs = new ReturnSummary()
             {
                 StatusCode = code,

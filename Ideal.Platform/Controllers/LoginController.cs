@@ -1,4 +1,5 @@
 ﻿using Ideal.Ideal.Model;
+using Ideal.Platform.Authorization;
 using Ideal.Platform.Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,7 @@ namespace Ideal.Platform.Controllers
         /// <param name="AccountName"></param>
         /// <param name="PassWord"></param>
         /// <returns></returns>
+        [NoAuthentiction]
         public IActionResult Login(string AccountName, string PassWord)
         {
             Ideal_AccountService ideal_AccountService = new Ideal_AccountService();

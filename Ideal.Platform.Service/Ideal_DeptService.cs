@@ -30,10 +30,7 @@ namespace Ideal.Platform.Service
             bool flag = false;
             Ideal_DeptBLL bll = new Ideal_DeptBLL();
             flag = bll.InsertDept(model, out code, out msg);
-            if (flag)
-            {
-                RedisHelper.SetValue((int)RedisType.Dept, model.DeptID, JsonConvert.SerializeObject(model));
-            }
+          
             returnSummary.IsSuccess = flag;
             returnSummary.Message = msg;
             returnSummary.StatusCode = code;
@@ -52,10 +49,7 @@ namespace Ideal.Platform.Service
             bool flag = false;
             Ideal_DeptBLL bll = new Ideal_DeptBLL();
             flag = bll.UpdateDept(model, out code, out msg);
-            if (flag)
-            {
-                RedisHelper.UpdateValue((int)RedisType.Dept, model.DeptID, JsonConvert.SerializeObject(model));
-            }
+            
             returnSummary.IsSuccess = flag;
             returnSummary.Message = msg;
             returnSummary.StatusCode = code;
@@ -74,10 +68,7 @@ namespace Ideal.Platform.Service
             bool flag = false;
             Ideal_DeptBLL bll = new Ideal_DeptBLL();
             flag = bll.DeleteDept(DeptID, out code, out msg);
-            if (flag)
-            {
-                RedisHelper.DeleteKey((int)RedisType.Dept, DeptID);
-            }
+            
             returnSummary.IsSuccess = flag;
             returnSummary.Message = msg;
             returnSummary.StatusCode = code;

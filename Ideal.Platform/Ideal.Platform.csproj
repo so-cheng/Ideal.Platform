@@ -23,11 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Ideal\Ideal.csproj" />
     <ProjectReference Include="..\Ideal.Platform.Common\Ideal.Platform.Common.csproj" />
     <ProjectReference Include="..\Ideal.Platform.Service\Ideal.Platform.Service.csproj" />
-    <ProjectReference Include="..\..\Ideal\Ideal.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
   </ItemGroup>
 
   <ItemGroup>

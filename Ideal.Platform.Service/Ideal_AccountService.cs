@@ -4,16 +4,22 @@ using Ideal.Ideal.Log;
 using Ideal.Ideal.Model;
 using Ideal.Ideal.Redis;
 using Ideal.Platform.BLL;
+using Ideal.Platform.Common;
 using Ideal.Platform.Common.Data;
 using Ideal.Platform.Common.MD5;
 using Ideal.Platform.Model;
 using Ideal.Platform.Model.Query;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Dynamic;
 using System.Reflection;
 using System.Text;
+using System.Xml.Linq;
 
 
 namespace Ideal.Platform.Service
@@ -33,10 +39,6 @@ namespace Ideal.Platform.Service
             string msg = string.Empty;
             Ideal_AccountBLL ideal_AccountBLL = new Ideal_AccountBLL();
             flag = ideal_AccountBLL.InsertAccount(model, out code, out msg);
-            if (flag)
-            {
-                RedisHelper.SetValue((int)RedisType.Account, model.AccountName, JsonConvert.SerializeObject(model));
-            }
             ReturnSummary rs = new ReturnSummary()
             {
                 StatusCode = code,
@@ -57,10 +59,6 @@ namespace Ideal.Platform.Service
             string msg = string.Empty;
             Ideal_AccountBLL ideal_AccountBLL = new Ideal_AccountBLL();
             flag = ideal_AccountBLL.UpdateAccount(model, out code, out msg);
-            if (flag)
-            {
-                RedisHelper.UpdateValue((int)RedisType.Account, model.AccountName, JsonConvert.SerializeObject(model));
-            }
             ReturnSummary rs = new ReturnSummary()
             {
                 StatusCode = code,
@@ -81,10 +79,7 @@ namespace Ideal.Platform.Service
             string msg = string.Empty;
             Ideal_AccountBLL ideal_AccountBLL = new Ideal_AccountBLL();
             flag = ideal_AccountBLL.DeteleAccount(AccountName, out code, out msg);
-            if (flag)
-            {
-                RedisHelper.DeleteKey((int)RedisType.Account, AccountName);
-            }
+
             ReturnSummary rs = new ReturnSummary()
             {
                 StatusCode = code,
@@ -174,8 +169,9 @@ namespace Ideal.Platform.Service
             //验证账号密码
             Ideal_AccountBLL ideal_AccountBLL = new Ideal_AccountBLL();
             Ideal_AccountModel model = new Ideal_AccountModel();
+            Password = MD5.Encrypt(Password);
             model = ideal_AccountBLL.GetAccountDetailByNameAndPassword(AccountName, Password, out code, out msg);
-            if (model == null && string.IsNullOrEmpty(model.AccountName))
+            if (model == null || string.IsNullOrEmpty(model.AccountName))
             {
                 returnSummary.IsSuccess = false;
                 returnSummary.Message = "用户名或密码错误！";
@@ -184,8 +180,10 @@ namespace Ideal.Platform.Service
             }
             // 查询账号角色的菜单
             Ideal_RoleMenuBLL ideal_RoleMenuBLL = new Ideal_RoleMenuBLL();
-            List<Ideal_RoleMenuModel> roleMenu = ideal_RoleMenuBLL.GetRoleMenuListByRoleID(model.RoleID, out code, out msg);
-            model.MenuList = roleMenu;
+            List<Ideal_RoleMenuModel> roleMenu = ideal_RoleMenuBLL.GetRoleMenuListByRoleID(model.RoleID, out int rcode, out msg);
+            List<dynamic> roleMenus = GetMenuList(roleMenu);
+            List<dynamic> returnMenu = GetWebMenuList(roleMenus);
+            model.MenuList = returnMenu;
             //登录信息存入Redis
 
             //判断是否登录
@@ -198,55 +196,63 @@ namespace Ideal.Platform.Service
             //重新把登录缓存加入
             RedisHelper.SetValue((int)RedisType.Login, model.UserID, JsonConvert.SerializeObject(model));
             //查询Redis所有Token
-            string redis = RedisHelper.GetValue((int)RedisType.Authorize, "Token");
-            List<TokenModel> tokens = JsonConvert.DeserializeObject<List<TokenModel>>(redis);
-            //找出当前登录人的Token删除
-            foreach (var item in tokens)
+            string redis = RedisHelper.GetValue((int)RedisType.Authorize, model.UserID);
+            if (!string.IsNullOrEmpty(redis))
             {
-                string token = DecryptToken(item.Token);
-                Ideal_UserModel ideal_UserModel = JsonConvert.DeserializeObject<Ideal_UserModel>(token);
-                if (ideal_UserModel.UserID == model.UserID)
-                {
-                    tokens.Remove(item);
-                    break;
-                }
+                RedisHelper.DeleteKey((int)RedisType.Authorize, model.UserID);
             }
             //重新添加Token
             TokenModel tokenModel = new TokenModel();
-            tokenModel.Token = GetTokenValue(model);
+            tokenModel.Token = TokenHelper.GetTokenValue(model.UserID);
             tokenModel.StarTime = DateTime.Now;
-            tokens.Add(tokenModel);
-            RedisHelper.UpdateValue((int)RedisType.Authorize, "Token", JsonConvert.SerializeObject(tokens));
+            RedisHelper.SetValue((int)RedisType.Authorize, model.UserID, tokenModel.Token);
+            model.Token = tokenModel.Token;
             returnSummary.IsSuccess = code == 20 ? true : false;
             returnSummary.Message = code == 20 ? "登录成功！" : "登录失败！";
             returnSummary.StatusCode = 20;
             returnSummary.Data = model;
             return returnSummary;
         }
-        /// <summary>
-        /// 生成Token
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        public string GetTokenValue(Ideal_AccountModel model)
-        {
-            string token = string.Empty;
-            string usermodel = JsonConvert.SerializeObject(model);
-            int day = DateTime.Now.Day;
-            int hour = DateTime.Now.Hour;
-            int minute = DateTime.Now.Minute;
-            token = day.ToString("dd") + usermodel + hour.ToString("HH") + minute.ToString("mm");
-            MD5.Encrypt(token);
-            return token;
-        }
-        private string DecryptToken(string Token)
-        {
-            string key = string.Empty;
-            string encryptToken = MD5.Decrypt(Token);
-            encryptToken = encryptToken.Substring(2, encryptToken.Length - 2);
-            encryptToken = encryptToken.Substring(2, encryptToken.Length - 4);
 
-            return encryptToken;
+        private List<object> GetMenuList(List<Ideal_RoleMenuModel> list)
+        {
+            List<dynamic> dynamics = new List<dynamic>();
+            foreach (var item in list)
+            {
+                dynamic myObject = new ExpandoObject();
+
+
+                myObject.id = item.MenuID;
+                myObject.parentid = item.ParentMenuID;
+                myObject.name = item.MenuName;
+                myObject.icon = item.Icon;
+                myObject.url = item.MenuURL;
+                dynamics.Add(myObject);
+            }
+            return dynamics;
+        }
+
+        private List<dynamic> GetWebMenuList(List<dynamic> webs)
+        {
+            var list = webs.Where(a => string.IsNullOrEmpty(a.parentid)).ToList();
+            foreach (var item in list)
+            {
+                AddChildMenu(item, webs);
+            }
+            return list;
+        }
+        private void AddChildMenu(dynamic webMenu, List<dynamic> webMenus)
+        {
+            List<dynamic> list = webMenus.Where(a => a.parentid == webMenu.id).ToList();
+            if (list.Count > 0)
+            {
+                webMenu.children = list;
+            }
+            foreach (var item in list)
+            {
+                AddChildMenu(item, webMenus);
+            }
+
         }
         #endregion
     }

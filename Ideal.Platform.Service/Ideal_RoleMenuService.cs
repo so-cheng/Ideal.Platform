@@ -33,23 +33,7 @@ namespace Ideal.Platform.Service
             bool flag = false;
             Ideal_RoleMenuBLL bll = new Ideal_RoleMenuBLL();
             flag = bll.InsertRoleMenu(listmodel, out code, out msg);
-            if (flag)
-            {
-                ///删除以前的缓存
-                if (listmodel.Count > 0)
-                {
-                    List<Ideal_RoleMenuModel> list = bll.GetRoleMenuListByRoleID(listmodel[0].RoleID, out int xcode, out string xmsg);
-                    foreach (var item in list)
-                    {
-                        RedisHelper.DeleteKey((int)RedisType.RoleMenu, item.FlowID);
-                    }
-                }
-                //新增缓存
-                foreach (var item in listmodel)
-                {
-                    RedisHelper.SetValue((int)RedisType.RoleMenu, item.FlowID, JsonConvert.SerializeObject(item));
-                }
-            }
+           
             returnSummary.IsSuccess = flag;
             returnSummary.Message = msg;
             returnSummary.StatusCode = code;

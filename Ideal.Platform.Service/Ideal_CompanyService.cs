@@ -32,10 +32,6 @@ namespace Ideal.Platform.Service
             string msg = string.Empty;
             Ideal_CompanyBLL ideal_CompanyBLL = new Ideal_CompanyBLL();
             flag = ideal_CompanyBLL.InsertCompany(model, out code, out msg);
-            if (flag)
-            {
-                RedisHelper.SetValue((int)RedisType.Company, model.CompanyID, JsonConvert.SerializeObject(model));
-            }
             ReturnSummary rs = new ReturnSummary()
             {
                 StatusCode = code,
@@ -56,10 +52,6 @@ namespace Ideal.Platform.Service
             string msg = string.Empty;
             Ideal_CompanyBLL ideal_CompanyBLL = new Ideal_CompanyBLL();
             flag = ideal_CompanyBLL.UpdateCompany(model, out code, out msg);
-            if (flag)
-            {
-                RedisHelper.UpdateValue((int)RedisType.Company, model.CompanyID, JsonConvert.SerializeObject(model));
-            }
             ReturnSummary rs = new ReturnSummary()
             {
                 StatusCode = code,
@@ -80,10 +72,6 @@ namespace Ideal.Platform.Service
             string msg = string.Empty;
             Ideal_CompanyBLL ideal_CompanyBLL = new Ideal_CompanyBLL();
             flag = ideal_CompanyBLL.DeleteCompany(CompanyID, out code, out msg);
-            if (flag)
-            {
-                RedisHelper.DeleteKey((int)RedisType.Company, CompanyID);
-            }
             ReturnSummary rs = new ReturnSummary()
             {
                 StatusCode = code,
@@ -158,7 +146,7 @@ namespace Ideal.Platform.Service
                 Data = model
             };
             return returnSummary;
-        }    
+        }
         #endregion
     }
 }

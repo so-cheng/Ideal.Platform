@@ -76,7 +76,7 @@ namespace Ideal.Platform.BLL
             List<Ideal_RoleMenuModel> result = new List<Ideal_RoleMenuModel>();
             PageQueryParam param = new PageQueryParam();
             param.WithNoLock = true;
-            param.SqlBody = " Ideal_RoleMenu as a Lief Join Ideal_Menu as b  on a.MenuID = b.MenuID ";
+            param.SqlBody = " Ideal_RoleMenu as a Left Join Ideal_Menu as b  on a.MenuID = b.MenuID ";
             param.SqlColumn = "a.*,b.MenuName,b.MenuURL,b.ParentMenuID,b.MenuSort,b.Icon,b.IsDisplay";
             param.SqlWhere = " AND a.RoleID = '" + RoleID + "'";
             result = BaseControl.GetAllModels<Ideal_RoleMenuModel>(param, out code, out msg);

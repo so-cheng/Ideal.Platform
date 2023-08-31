@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="Ideal">
-      <HintPath>..\LIB\Ideal.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\Ideal\Ideal.csproj" />
   </ItemGroup>
 
 </Project>

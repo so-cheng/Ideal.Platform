@@ -25,13 +25,6 @@ namespace Ideal.Platform.BLL
         /// <returns></returns>
         public bool InsertAccount(Ideal_AccountModel model, out int code, out string msg)
         {
-
-            //BaseControl.constr_str = ConfigClass.SqlConnectionStr;
-            BaseControl.SetConnton(ConfigClass.SqlConnectionStr);
-            List<Ideal_AccountModel> vm = new List<Ideal_AccountModel>();
-            PageQueryParam param = new PageQueryParam();
-            param.SqlWhere = " Where XType='U' ";
-            vm = BaseControl.GetAllModels<Ideal_AccountModel>(param, out  code, out  msg);
             bool flag = false;
             code = 11;
             msg = "新增失败！";
@@ -176,7 +169,7 @@ namespace Ideal.Platform.BLL
             Ideal_AccountModel model = new Ideal_AccountModel();
             PageQueryParam param = new PageQueryParam();
             param.WithNoLock = true;
-            param.SqlBody = " Ideal_Account as a Left Join Ideal_Role as b on a.RoleID = b.RoleID Left Join Ideal_User as c on a.UserID = b.UserID";
+            param.SqlBody = " Ideal_Account as a Left Join Ideal_Role as b on a.RoleID = b.RoleID Left Join Ideal_User as c on a.UserID = c.UserID";
             param.SqlColumn = "a.*,b.RoleName,c.UserName";
             param.SqlWhere = " AND a.AccountName = '" + AccountName + "' AND Password = '" + Password + "'";
             model = BaseControl.GetModel<Ideal_AccountModel>(param, out code, out msg);

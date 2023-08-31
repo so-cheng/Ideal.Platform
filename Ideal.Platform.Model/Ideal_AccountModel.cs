@@ -25,7 +25,7 @@ namespace Ideal.Platform.Model
         {
 
             this.Owner_DB_TableName = "Ideal_Account";
-            MenuList = new List<Ideal_RoleMenuModel>();
+            MenuList = new List<dynamic>(); 
         }
         /// <summary>
         /// 
@@ -78,7 +78,10 @@ namespace Ideal.Platform.Model
         public string Creator { get; set; }
 
         [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
-        public List<Ideal_RoleMenuModel> MenuList { get; set; }
+        public List<dynamic> MenuList { get; set; }
+
+        [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
+        public string Token { get; set; }
     }
 }
 

@@ -15,10 +15,4 @@
     <ProjectReference Include="..\Ideal.Platform.Model\Ideal.Platform.Model.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Ideal">
-      <HintPath>..\LIB\Ideal.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

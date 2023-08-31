@@ -751,6 +751,9 @@
         }
       },
       "Ideal.Platform.Model/1.0.0": {
+        "dependencies": {
+          "Ideal": "1.0.0"
+        },
         "runtime": {
           "Ideal.Platform.Model.dll": {}
         }

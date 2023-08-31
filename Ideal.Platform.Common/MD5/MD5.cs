@@ -9,7 +9,7 @@ namespace Ideal.Platform.Common.MD5
 {
     public class MD5
     {
-        private static string DESKey = "Ideal";
+        private static string DESKey = "";
         /// <summary>
         /// 加密
         /// </summary>
@@ -30,12 +30,9 @@ namespace Ideal.Platform.Common.MD5
             DESCryptoServiceProvider des = new DESCryptoServiceProvider();
             byte[] inputByteArray;
             inputByteArray = Encoding.Default.GetBytes(Text);
-
-
             System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create();
-            des.Key = ASCIIEncoding.ASCII.GetBytes(BitConverter.ToString(md5.ComputeHash(Encoding.UTF8.GetBytes(sKey + "md5"))).Replace("-", null).Substring(0, 8));
-            des.IV = ASCIIEncoding.ASCII.GetBytes(BitConverter.ToString(md5.ComputeHash(Encoding.UTF8.GetBytes(sKey + "md5"))).Replace("-", null).Substring(0, 8));
-
+            des.Key = ASCIIEncoding.ASCII.GetBytes(BitConverter.ToString(md5.ComputeHash(Encoding.UTF8.GetBytes("md5"))).Replace("-", null).Substring(0, 8));
+            des.IV = ASCIIEncoding.ASCII.GetBytes(BitConverter.ToString(md5.ComputeHash(Encoding.UTF8.GetBytes("md5"))).Replace("-", null).Substring(0, 8));
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
             CryptoStream cs = new CryptoStream(ms, des.CreateEncryptor(), CryptoStreamMode.Write);
             cs.Write(inputByteArray, 0, inputByteArray.Length);
@@ -79,8 +76,8 @@ namespace Ideal.Platform.Common.MD5
                 inputByteArray[x] = (byte)i;
             }
             System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create();
-            des.Key = ASCIIEncoding.ASCII.GetBytes(BitConverter.ToString(md5.ComputeHash(Encoding.UTF8.GetBytes(sKey + "md5"))).Replace("-", null).Substring(0, 8));
-            des.IV = ASCIIEncoding.ASCII.GetBytes(BitConverter.ToString(md5.ComputeHash(Encoding.UTF8.GetBytes(sKey + "md5"))).Replace("-", null).Substring(0, 8));
+            des.Key = ASCIIEncoding.ASCII.GetBytes(BitConverter.ToString(md5.ComputeHash(Encoding.UTF8.GetBytes("md5"))).Replace("-", null).Substring(0, 8));
+            des.IV = ASCIIEncoding.ASCII.GetBytes(BitConverter.ToString(md5.ComputeHash(Encoding.UTF8.GetBytes("md5"))).Replace("-", null).Substring(0, 8));
 
 
             System.IO.MemoryStream ms = new System.IO.MemoryStream();

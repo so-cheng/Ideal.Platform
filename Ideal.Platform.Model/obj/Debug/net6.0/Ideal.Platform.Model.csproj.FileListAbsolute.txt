@@ -26,3 +26,4 @@ E:\Git\Ideal.Platform\Ideal.Platform.Model\obj\Debug\net6.0\Ideal.Platform.Model
 E:\Git\Ideal.Platform\Ideal.Platform.Model\obj\Debug\net6.0\refint\Ideal.Platform.Model.dll
 E:\Git\Ideal.Platform\Ideal.Platform.Model\obj\Debug\net6.0\Ideal.Platform.Model.pdb
 E:\Git\Ideal.Platform\Ideal.Platform.Model\obj\Debug\net6.0\ref\Ideal.Platform.Model.dll
+E:\Git\Ideal.Platform\Ideal.Platform.Model\bin\Debug\net6.0\Ideal.pdb

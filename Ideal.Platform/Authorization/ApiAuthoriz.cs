@@ -12,36 +12,46 @@ namespace Ideal.Platform.Authorization
     {
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            //if (context.Filters.Contains(new NoAuthentiction()))
-            //{
-            //    return;
-            //}
-            ////获取传输的Authorize
-            //var authorize = context.HttpContext.Request.Headers["Authorize"];
-            ////判断传输的Authorize是否为空
-
-            //if (string.IsNullOrEmpty(authorize))
-            //{
-            //    ReturnSummary returnSummary = new ReturnSummary();
-            //    returnSummary.StatusCode = 00;
-            //    returnSummary.Message = "请求Authorize不能为空！";
-            //    returnSummary.IsSuccess = false;
-            //    context.Result = new JsonResult(returnSummary);
-            //    return;
-            //}
-            //string redis = RedisHelper.GetValue((int)RedisType.Authorize, "Token");
-            //List<TokenModel> tokens = JsonConvert.DeserializeObject<List<TokenModel>>(redis);
-            //if (tokens.Where(a => a.Token != authorize).Count() == 0)
-            //{
-            //    ReturnSummary returnSummary = new ReturnSummary();
-            //    returnSummary.StatusCode = 00;
-            //    returnSummary.Message = "无效的Authorize授权信息，或者授权信息已过期";
-            //    returnSummary.IsSuccess = false;
-            //    context.Result = new JsonResult(returnSummary);
-            //    context.Result = new JsonResult("无效的Authorize授权信息，或者授权信息已过期");
-            //    return;
-            //}
-
+            if (context.Filters.Contains(new NoAuthentiction()))
+            {
+                return;
+            }
+            //获取传输的Authorize
+            var authorize = context.HttpContext.Request.Headers["Authorize"];
+            var UserID = context.HttpContext.Request.Form["userID"];
+            //判断传输的Authorize是否为空
+            if (string.IsNullOrEmpty(authorize))
+            {
+                ReturnSummary returnSummary = new ReturnSummary();
+                returnSummary.StatusCode = 00;
+                returnSummary.Message = "请求Authorize不能为空！";
+                returnSummary.IsSuccess = false;
+                context.Result = new JsonResult(returnSummary);
+                return;
+            }
+            string redis = RedisHelper.GetValue((int)RedisType.Authorize, UserID);
+            TokenModel tokens = JsonConvert.DeserializeObject<TokenModel>(redis);
+            if (string.IsNullOrEmpty(redis) || tokens.Token != authorize)
+            {
+                ReturnSummary returnSummary = new ReturnSummary();
+                returnSummary.StatusCode = 00;
+                returnSummary.Message = "非法访问！";
+                returnSummary.IsSuccess = false;
+                context.Result = new JsonResult(returnSummary);
+                return;
+            }
+            TimeSpan timeDiff = DateTime.Now - tokens.StarTime;
+            if (timeDiff.TotalMinutes > 40)
+            {
+                RedisHelper.DeleteKey((int)RedisType.Authorize, UserID);
+                ReturnSummary returnSummary = new ReturnSummary();
+                returnSummary.StatusCode = 00;
+                returnSummary.Message = "登录过期!请重新登录。";
+                returnSummary.IsSuccess = false;
+                context.Result = new JsonResult(returnSummary);
+                return;
+            }
+            
         }
     }
 }

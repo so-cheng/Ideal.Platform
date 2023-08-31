@@ -1,4 +1,5 @@
 ﻿using Ideal.Ideal.Redis;
+using Ideal.Platform.Common;
 using Ideal.Platform.Common.Data;
 using Ideal.Platform.Common.MD5;
 using Ideal.Platform.Model;
@@ -19,7 +20,7 @@ namespace Ideal.Platform.Job
             List<TokenModel> tokens = JsonConvert.DeserializeObject<List<TokenModel>>(redis);
             foreach (var item in tokens)
             {
-                string token = DecryptToken(item.Token);
+                string token = TokenHelper.DecryptToken(item.Token);
                 TokenModel model = tokens.SingleOrDefault(a => a.Token == token);
                 string day = token.Substring(0, 2);
                 string hour = token.Substring(token.Length - 4, 2);
@@ -31,13 +32,6 @@ namespace Ideal.Platform.Job
                     tokens.Remove(item);
                 }
             }
-        }
-
-        private static string DecryptToken(string Token)
-        {
-            string key = string.Empty;
-            string encryptToken = MD5.Decrypt(Token);
-            return encryptToken;
         }
     }
 }

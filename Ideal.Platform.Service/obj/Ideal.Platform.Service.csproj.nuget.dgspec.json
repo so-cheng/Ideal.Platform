@@ -157,7 +157,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "E:\\Git\\Ideal\\Ideal.csproj": {
+                "projectPath": "E:\\Git\\Ideal\\Ideal.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

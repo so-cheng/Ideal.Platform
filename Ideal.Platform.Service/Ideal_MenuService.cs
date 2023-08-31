@@ -31,10 +31,7 @@ namespace Ideal.Platform.Service
             string msg = string.Empty;
             Ideal_MenuBLL ideal_MenuBLL = new Ideal_MenuBLL();
             flag = ideal_MenuBLL.InsertMenu(model, out code, out msg);
-            if (flag)
-            {
-                RedisHelper.SetValue((int)RedisType.Menu, model.MenuID, JsonConvert.SerializeObject(model));
-            }
+           
             ReturnSummary rs = new ReturnSummary()
             {
                 StatusCode = code,
@@ -55,10 +52,7 @@ namespace Ideal.Platform.Service
             string msg = string.Empty;
             Ideal_MenuBLL ideal_MenuBLL = new Ideal_MenuBLL();
             flag = ideal_MenuBLL.UpdateMenu(model, out code, out msg);
-            if (flag)
-            {
-                RedisHelper.UpdateValue((int)RedisType.Menu, model.MenuID, JsonConvert.SerializeObject(model));
-            }
+            
             ReturnSummary rs = new ReturnSummary()
             {
                 StatusCode = code,
@@ -79,10 +73,7 @@ namespace Ideal.Platform.Service
             string msg = string.Empty;
             Ideal_MenuBLL ideal_MenuBLL = new Ideal_MenuBLL();
             flag = ideal_MenuBLL.DeleteMenu(MenuID, out code, out msg);
-            if (flag)
-            {
-                RedisHelper.DeleteKey((int)RedisType.Menu, MenuID);
-            }
+            
             ReturnSummary rs = new ReturnSummary()
             {
                 StatusCode = code,

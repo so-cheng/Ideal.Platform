@@ -33,11 +33,7 @@ namespace Ideal.Platform.Service
             string msg = string.Empty;
             Ideal_UserBLL ideal_UserBLL = new Ideal_UserBLL();
             flag = ideal_UserBLL.InsertUser(model, postModel, out code, out msg);
-            if (flag)
-            {
-                RedisHelper.SetValue((int)RedisType.User, model.UserID, JsonConvert.SerializeObject(model));
-                RedisHelper.SetValue((int)RedisType.UserPost, postModel.FlowID, JsonConvert.SerializeObject(postModel));
-            }
+
             ReturnSummary rs = new ReturnSummary()
             {
                 StatusCode = code,
@@ -61,12 +57,7 @@ namespace Ideal.Platform.Service
             string msg = string.Empty;
             Ideal_UserBLL ideal_UserBLL = new Ideal_UserBLL();
             flag = ideal_UserBLL.UpdateUser(model, postModel, out code, out msg);
-            if (flag)
-            {
-                RedisHelper.DeleteKey((int)RedisType.UserPost, postModel.FlowID);
-                RedisHelper.UpdateValue((int)RedisType.User, model.UserID, JsonConvert.SerializeObject(model));
-                RedisHelper.SetValue((int)RedisType.UserPost, postModel.FlowID, JsonConvert.SerializeObject(postModel));
-            }
+
             ReturnSummary rs = new ReturnSummary()
             {
                 StatusCode = code,
@@ -87,12 +78,6 @@ namespace Ideal.Platform.Service
             string msg = string.Empty;
             Ideal_UserBLL ideal_UserBLL = new Ideal_UserBLL();
             flag = ideal_UserBLL.DeteleUser(UserID, out code, out msg);
-            if (flag)
-            {
-                Ideal_UserPostModel postModel = ideal_UserBLL.GetUserPostDetailByUserID(UserID, out int xcode, out string xmsg);
-                RedisHelper.DeleteKey((int)RedisType.UserPost, postModel.FlowID);
-                RedisHelper.DeleteKey((int)RedisType.User, UserID);
-            }
             ReturnSummary rs = new ReturnSummary()
             {
                 StatusCode = code,
@@ -119,12 +104,12 @@ namespace Ideal.Platform.Service
             model = ideal_UserBLL.GetUserDetailByUserID(UserID, out code, out msg);
             if (code == 20)
             {
-                model.SexName = RedisHelper.GetValue((int)RedisType.Sex, model.Sex);
-                model.UserStatusName = RedisHelper.GetValue((int)RedisType.UserStatus, model.UserStatus.ToString());
-                model.CheckTypeName = RedisHelper.GetValue((int)RedisType.CheckType, model.CheckType.ToString());
-                model.IDCardTypeName = RedisHelper.GetValue((int)RedisType.IDCardType, model.IDCardType.ToString());
-                model.EducationName = RedisHelper.GetValue((int)RedisType.MyEducationDegree, model.Education.ToString());
-                model.PoliticalStatusName = RedisHelper.GetValue((int)RedisType.PoliticalStatus, model.PoliticalStatus.ToString());
+                model.SexName = GetData.SexList().SingleOrDefault(a => a.Key == model.Sex)?.Value;
+                model.UserStatusName = GetData.UserStatusList().SingleOrDefault(a => a.Key == Convert.ToInt32(model.UserStatus).ToString())?.Value;
+                model.CheckTypeName = GetData.CheckTypeList().SingleOrDefault(a => a.Key == model.CheckType)?.Value;
+                model.IDCardTypeName = GetData.IDCardTypeList().SingleOrDefault(a => a.Key == Convert.ToInt32(model.IDCardType).ToString())?.Value;
+                model.EducationName = GetData.MyEducationDegreeList().SingleOrDefault(a => a.Key == Convert.ToInt32(model.Education).ToString())?.Value;
+                model.PoliticalStatusName = GetData.PoliticalStatusList().SingleOrDefault(a => a.Key == Convert.ToInt32(model.PoliticalStatus).ToString())?.Value;
             }
             ReturnSummary returnSummary = new ReturnSummary()
             {
@@ -154,12 +139,12 @@ namespace Ideal.Platform.Service
                 {
                     foreach (var model in list)
                     {
-                        model.SexName = RedisHelper.GetValue((int)RedisType.Sex, model.Sex);
-                        model.UserStatusName = RedisHelper.GetValue((int)RedisType.UserStatus, model.UserStatus.ToString());
-                        model.CheckTypeName = RedisHelper.GetValue((int)RedisType.CheckType, model.CheckType.ToString());
-                        model.IDCardTypeName = RedisHelper.GetValue((int)RedisType.IDCardType, model.IDCardType.ToString());
-                        model.EducationName = RedisHelper.GetValue((int)RedisType.MyEducationDegree, model.Education.ToString());
-                        model.PoliticalStatusName = RedisHelper.GetValue((int)RedisType.PoliticalStatus, model.PoliticalStatus.ToString());
+                        model.SexName = GetData.SexList().SingleOrDefault(a => a.Key == model.Sex)?.Value;
+                        model.UserStatusName = GetData.UserStatusList().SingleOrDefault(a => a.Key == Convert.ToInt32(model.UserStatus).ToString())?.Value;
+                        model.CheckTypeName = GetData.CheckTypeList().SingleOrDefault(a => a.Key == model.CheckType)?.Value;
+                        model.IDCardTypeName = GetData.IDCardTypeList().SingleOrDefault(a => a.Key == Convert.ToInt32(model.IDCardType).ToString())?.Value;
+                        model.EducationName = GetData.MyEducationDegreeList().SingleOrDefault(a => a.Key == Convert.ToInt32(model.Education).ToString())?.Value;
+                        model.PoliticalStatusName = GetData.PoliticalStatusList().SingleOrDefault(a => a.Key == Convert.ToInt32(model.PoliticalStatus).ToString())?.Value;
                     }
                 }
 
@@ -192,12 +177,12 @@ namespace Ideal.Platform.Service
                 {
                     foreach (var model in modellist)
                     {
-                        model.SexName = RedisHelper.GetValue((int)RedisType.Sex, model.Sex);
-                        model.UserStatusName = RedisHelper.GetValue((int)RedisType.UserStatus, model.UserStatus.ToString());
-                        model.CheckTypeName = RedisHelper.GetValue((int)RedisType.CheckType, model.CheckType.ToString());
-                        model.IDCardTypeName = RedisHelper.GetValue((int)RedisType.IDCardType, model.IDCardType.ToString());
-                        model.EducationName = RedisHelper.GetValue((int)RedisType.MyEducationDegree, model.Education.ToString());
-                        model.PoliticalStatusName = RedisHelper.GetValue((int)RedisType.PoliticalStatus, model.PoliticalStatus.ToString());
+                        model.SexName = GetData.SexList().SingleOrDefault(a => a.Key == model.Sex)?.Value;
+                        model.UserStatusName = GetData.UserStatusList().SingleOrDefault(a => a.Key == Convert.ToInt32(model.UserStatus).ToString())?.Value;
+                        model.CheckTypeName = GetData.CheckTypeList().SingleOrDefault(a => a.Key == model.CheckType)?.Value;
+                        model.IDCardTypeName = GetData.IDCardTypeList().SingleOrDefault(a => a.Key == Convert.ToInt32(model.IDCardType).ToString())?.Value;
+                        model.EducationName = GetData.MyEducationDegreeList().SingleOrDefault(a => a.Key == Convert.ToInt32(model.Education).ToString())?.Value;
+                        model.PoliticalStatusName = GetData.PoliticalStatusList().SingleOrDefault(a => a.Key == Convert.ToInt32(model.PoliticalStatus).ToString())?.Value;
                     }
                 }
 
