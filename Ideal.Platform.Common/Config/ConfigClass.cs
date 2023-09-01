@@ -52,13 +52,13 @@ namespace Ideal.Platform.Common.Config
             RedisHelper.SetValue((int)RedisType.Cache, "MyEducationDegree", JsonConvert.SerializeObject(keyValues));
             //名族
             keyValues = GetData.MyNationList();
-            RedisHelper.SetValue((int)RedisType.Basics, "MyNation", JsonConvert.SerializeObject(keyValues));
+            RedisHelper.SetValue((int)RedisType.Cache, "MyNation", JsonConvert.SerializeObject(keyValues));
             //政治面貌
             keyValues = GetData.PoliticalStatusList();
             RedisHelper.SetValue((int)RedisType.Cache, "PoliticalStatus", JsonConvert.SerializeObject(keyValues));
             //证件类型
             keyValues = GetData.IDCardTypeList();
-            RedisHelper.SetValue((int)RedisType.Basics, "IDCardType", JsonConvert.SerializeObject(keyValues));
+            RedisHelper.SetValue((int)RedisType.Cache, "IDCardType", JsonConvert.SerializeObject(keyValues));
             //核算类型
             keyValues = GetData.CheckTypeList();
             RedisHelper.SetValue((int)RedisType.Cache, "CheckType", JsonConvert.SerializeObject(keyValues));
