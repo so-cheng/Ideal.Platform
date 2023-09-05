@@ -13,6 +13,9 @@
         "packagesPath": "C:\\Users\\理想再见\\.nuget\\packages\\",
         "outputPath": "E:\\Git\\Ideal.Platform\\Ideal.Platform.BLL\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\理想再见\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -78,6 +81,9 @@
         "packagesPath": "C:\\Users\\理想再见\\.nuget\\packages\\",
         "outputPath": "E:\\Git\\Ideal.Platform\\Ideal.Platform.Common\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\理想再见\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -143,6 +149,9 @@
         "packagesPath": "C:\\Users\\理想再见\\.nuget\\packages\\",
         "outputPath": "E:\\Git\\Ideal.Platform\\Ideal.Platform.Model\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\理想再见\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -202,6 +211,9 @@
         "packagesPath": "C:\\Users\\理想再见\\.nuget\\packages\\",
         "outputPath": "E:\\Git\\Ideal.Platform\\Ideal.Platform.Service\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\理想再见\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -270,6 +282,9 @@
         "packagesPath": "C:\\Users\\理想再见\\.nuget\\packages\\",
         "outputPath": "E:\\Git\\Ideal\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\理想再见\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
