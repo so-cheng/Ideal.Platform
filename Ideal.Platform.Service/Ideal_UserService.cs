@@ -154,7 +154,7 @@ namespace Ideal.Platform.Service
                 StatusCode = code,
                 Message = msg,
                 IsSuccess = code == 21 ? false : true,
-                Data = modellist.Data,
+                Data = modellist.PageList,
                 Total = modellist.Total
             };
             return returnSummary;

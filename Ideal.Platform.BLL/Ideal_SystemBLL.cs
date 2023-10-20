@@ -99,7 +99,7 @@ namespace Ideal.Platform.BLL
             msg = "删除失败！";
             Ideal_SystemModel System = new Ideal_SystemModel();
             System = GetSystemDetailByID(SystemID, out code, out msg);
-            if (code == 20)
+            if (code == 21)
             {
                 msg = "没有找到此系统！";
                 return false;
@@ -124,7 +124,7 @@ namespace Ideal.Platform.BLL
             msg = "查询失败！";
             Ideal_SystemModel model = new Ideal_SystemModel();
             PageQueryParam param = new PageQueryParam();
-            param.SqlBody = " Ideal_System as a Left Join Ideal_Company as b on a.ConpanyID = b.CompanyID";
+            param.SqlBody = " Ideal_System as a Left Join Ideal_Company as b on a.CompanyID = b.CompanyID";
             param.SqlColumn = " a.*,b.CompanyName";
             param.SqlWhere = " AND SystemID = '" + SystemID + "'";
             model = BaseControl.GetModel<Ideal_SystemModel>(param, out code, out msg);
@@ -181,16 +181,20 @@ namespace Ideal.Platform.BLL
             msg = "查询失败！";
             PageModel<Ideal_SystemModel> pageModel = new PageModel<Ideal_SystemModel>();
             PageQueryParam param = new PageQueryParam();
-            param.SqlBody = " Ideal_System as a Left Join Ideal_Company as b on a.ConpanyID = b.CompanyID";
+            param.SqlBody = " Ideal_System as a Left Join Ideal_Company as b on a.CompanyID = b.CompanyID";
             param.SqlColumn = " a.*,b.CompanyName";
             if (!string.IsNullOrEmpty(query.SystemName))
             {
-                param.SqlWhere += " AND SystemName LIKE '%" + query.SystemName + "%'";
+                param.SqlWhere += " AND a.SystemName LIKE '%" + query.SystemName + "%'";
             }
 
             if (!string.IsNullOrEmpty(query.SystemCode))
             {
-                param.SqlWhere += " AND SystemCode LIKE '%" + query.SystemCode + "%'";
+                param.SqlWhere += " AND a.SystemCode LIKE '%" + query.SystemCode + "%'";
+            }
+            if (!string.IsNullOrEmpty(query.CompanyName))
+            {
+                param.SqlWhere += " AND b.CompanyName LIKE '%" + query.CompanyName + "%'";
             }
             param.PageIndex = query.PageIndex; 
             param.PageSize = query.PageSize;

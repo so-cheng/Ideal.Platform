@@ -44,6 +44,7 @@ namespace Ideal.Platform.Authorization
             if (timeDiff.TotalMinutes > 40)
             {
                 RedisHelper.DeleteKey((int)RedisType.Authorize, UserID);
+                RedisHelper.DeleteKey((int)RedisType.Login, UserID);
                 ReturnSummary returnSummary = new ReturnSummary();
                 returnSummary.StatusCode = 00;
                 returnSummary.Message = "登录过期!请重新登录。";

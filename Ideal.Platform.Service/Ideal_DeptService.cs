@@ -111,7 +111,7 @@ namespace Ideal.Platform.Service
             returnSummary.IsSuccess = code == 20 ? true : false;
             returnSummary.Message = msg;
             returnSummary.StatusCode = code;
-            returnSummary.Data = list.Data;
+            returnSummary.Data = list.PageList;
             returnSummary.Total = list.Total;
             return returnSummary;
         }

@@ -129,7 +129,7 @@ namespace Ideal.Platform.Service
                 StatusCode = code,
                 Message = msg,
                 IsSuccess = code == 21 ? false : true,
-                Data = model.Data,
+                Data = model.PageList,
                 Total = model.Total
             };
             return returnSummary;
@@ -205,7 +205,8 @@ namespace Ideal.Platform.Service
             TokenModel tokenModel = new TokenModel();
             tokenModel.Token = TokenHelper.GetTokenValue(model.UserID);
             tokenModel.StarTime = DateTime.Now;
-            RedisHelper.SetValue((int)RedisType.Authorize, model.UserID, tokenModel.Token);
+            tokenModel.UserID = model.UserID;
+            RedisHelper.SetValue((int)RedisType.Authorize, model.UserID, JsonConvert.SerializeObject(tokenModel));
             model.Token = tokenModel.Token;
             returnSummary.IsSuccess = code == 20 ? true : false;
             returnSummary.Message = code == 20 ? "登录成功！" : "登录失败！";

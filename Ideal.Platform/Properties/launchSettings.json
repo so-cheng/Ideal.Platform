@@ -1,21 +1,14 @@
 {
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:13936",
-      "sslPort": 0
-    }
-  },
   "profiles": {
     "SqlServer": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:5060",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "dotnetRunMessages": true
+      "applicationUrl": "http://172.17.30.99:5098",
+      "dotnetRunMessages": true,
+      "nativeDebugging": false
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -23,6 +16,14 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    }
+  },
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:13936",
+      "sslPort": 0
     }
   }
 }

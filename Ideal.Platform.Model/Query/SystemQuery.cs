@@ -13,5 +13,7 @@ namespace Ideal.Platform.Model.Query
         public string SystemCode { get; set; }
 
         public string CompanyID { get; set; }
+
+        public string CompanyName { get; set; }
     }
 }
