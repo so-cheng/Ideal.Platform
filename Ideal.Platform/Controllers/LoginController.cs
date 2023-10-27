@@ -20,5 +20,12 @@ namespace Ideal.Platform.Controllers
             ReturnSummary returnSummary = ideal_AccountService.Login(AccountName, PassWord);
             return Json(returnSummary);
         }
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+
     }
 }

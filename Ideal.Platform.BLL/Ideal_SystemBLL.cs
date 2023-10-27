@@ -59,7 +59,7 @@ namespace Ideal.Platform.BLL
             msg = "修改失败！";
             Ideal_SystemModel System = new Ideal_SystemModel();
             System = GetSystemDetailByID(model.SystemID, out code, out msg);
-            if (code == 20)
+            if (code != 20)
             {
                 code = 11;
                 msg = "没有找到此系统！";
@@ -99,7 +99,7 @@ namespace Ideal.Platform.BLL
             msg = "删除失败！";
             Ideal_SystemModel System = new Ideal_SystemModel();
             System = GetSystemDetailByID(SystemID, out code, out msg);
-            if (code == 21)
+            if (code != 20)
             {
                 msg = "没有找到此系统！";
                 return false;
@@ -143,7 +143,7 @@ namespace Ideal.Platform.BLL
             msg = "查询失败！";
             Ideal_SystemModel model = new Ideal_SystemModel();
             PageQueryParam param = new PageQueryParam();
-            param.SqlBody = " Ideal_System as a Left Join Ideal_Company as b on a.ConpanyID = b.CompanyID";
+            param.SqlBody = " Ideal_System as a Left Join Ideal_Company as b on a.CompanyID = b.CompanyID";
             param.SqlColumn = " a.*,b.CompanyName";
             param.SqlWhere = " AND SystemName = '" + SystemName + "'";
             model = BaseControl.GetModel<Ideal_SystemModel>(param, out code, out msg);

@@ -125,7 +125,9 @@ namespace Ideal.Platform.Service
                 Message = msg,
                 IsSuccess = code == 21 ? false : true,
                 Data = model.PageList,
-                Total = model.Total
+                Total = model.Total,
+                PageIndex = model.PageIndex,
+                PageSize= model.PageSize
             };
             return returnSummary;
         }

@@ -82,6 +82,9 @@ namespace Ideal.Platform.Model
 
         [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
         public string Token { get; set; }
+
+        public List<string> Permissions { get; set; }
+        public List<string> DashboardGrid { get; set; }
     }
 }
 

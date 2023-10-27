@@ -41,8 +41,6 @@ namespace Ideal.Platform.Model
 		[DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
 		public string Creator { get; set; }
 
-
-
 		[DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
 		public string MenuName { get; set; }
 		/// <summary>
@@ -70,5 +68,20 @@ namespace Ideal.Platform.Model
 		/// </summary>	
 		[DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
 		public string IsDisplay { get; set; }
-	}
+        /// <summary>
+        /// 
+        /// </summary>
+        [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
+        public string Name { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
+        public string Type { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
+        public string Component { get; set; }
+    }
 }

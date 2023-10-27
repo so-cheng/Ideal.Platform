@@ -52,6 +52,21 @@ namespace Ideal.Platform.Model
         public string IsDisplay { get; set; }
         /// <summary>
         /// 
+        /// </summary>
+        [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
+        public string Name { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
+        public string Type { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
+        public string Component { get; set; }
+        /// <summary>
+        /// 
         /// </summary>	
         [DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
         public DateTime CreateTime { get; set; }

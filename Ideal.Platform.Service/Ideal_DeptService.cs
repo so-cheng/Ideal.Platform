@@ -112,7 +112,9 @@ namespace Ideal.Platform.Service
             returnSummary.Message = msg;
             returnSummary.StatusCode = code;
             returnSummary.Data = list.PageList;
-            returnSummary.Total = list.Total;
+            returnSummary.Total = list.Total; 
+            returnSummary.PageIndex = list.PageIndex; 
+            returnSummary.PageSize = list.PageSize;
             return returnSummary;
         }
         /// <summary>

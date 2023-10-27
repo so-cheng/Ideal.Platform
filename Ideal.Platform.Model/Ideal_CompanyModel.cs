@@ -18,23 +18,18 @@ namespace Ideal.Platform.Model
 		/// <summary>
 		/// 公司ID
 		/// </summary>	
-		[DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
+		[DbFieldAttribute(DbFieldMode.PRIMARY_KEY)]
 		public string CompanyID { get; set; }
 		/// <summary>
 		/// 公司编码
 		/// </summary>	
-		[DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
+		[DbFieldAttribute(DbFieldMode.ALL_SAVE)]
 		public string CompanyCode { get; set; }
 		/// <summary>
 		/// 公司名称
 		/// </summary>	
 		[DbFieldAttribute(DbFieldMode.ALL_SAVE)]
 		public string CompanyName { get; set; }
-		/// <summary>
-		/// 创建时间
-		/// </summary>	
-		[DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
-		public DateTime CreateTime { get; set; }
 		/// <summary>
 		/// 创建人
 		/// </summary>	

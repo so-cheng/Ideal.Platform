@@ -113,6 +113,8 @@ namespace Ideal.Platform.Service
             returnSummary.StatusCode = code;
             returnSummary.Data = model.PageList;
             returnSummary.Total = model.Total;
+            returnSummary.PageIndex = query.PageIndex;
+            returnSummary.PageIndex = query.PageSize;
             return returnSummary;
         }
         /// <summary>

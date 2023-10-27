@@ -40,7 +40,6 @@ namespace Ideal.Platform.BLL
                 return false;
             }
             model.CompanyID = SnowFlakeUse.GetSnowflakeID();
-            model.CreateTime = DateTime.Now;
             flag = BaseControl.InsertDB<Ideal_CompanyModel>(model, out code, out msg);
             code = flag ? 10 : 11;
             msg = flag ? "新增成功！" : "新增失败！";
@@ -60,7 +59,7 @@ namespace Ideal.Platform.BLL
             msg = "修改失败！";
             Ideal_CompanyModel company = new Ideal_CompanyModel();
             company = GetCompanyDetailByID(model.CompanyID, out code, out msg);
-            if (code == 20)
+            if (code != 20)
             {
                 code = 11;
                 msg = "没有找到此公司！";
@@ -100,7 +99,7 @@ namespace Ideal.Platform.BLL
             msg = "删除失败！";
             Ideal_CompanyModel company = new Ideal_CompanyModel();
             company = GetCompanyDetailByID(CompanyID, out code, out msg);
-            if (code == 20)
+            if (code != 20)
             {
                 msg = "没有找到此公司！";
                 return false;

@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
@@ -130,7 +131,9 @@ namespace Ideal.Platform.Service
                 Message = msg,
                 IsSuccess = code == 21 ? false : true,
                 Data = model.PageList,
-                Total = model.Total
+                Total = model.Total,
+                PageIndex = model.PageIndex,
+                PageSize = model.PageSize
             };
             return returnSummary;
         }
@@ -184,6 +187,9 @@ namespace Ideal.Platform.Service
             List<dynamic> roleMenus = GetMenuList(roleMenu);
             List<dynamic> returnMenu = GetWebMenuList(roleMenus);
             model.MenuList = returnMenu;
+            //model.Permissions = new List<string>() { "list.add", "list.edit", "list.delete", "user.add", "user.edit", "user.delete" };
+            //model.DashboardGrid = new List<string>() { "welcome", "ver", "time", "prokgress", "echarts", "about", };
+
             //登录信息存入Redis
 
             //判断是否登录
@@ -221,13 +227,18 @@ namespace Ideal.Platform.Service
             foreach (var item in list)
             {
                 dynamic myObject = new ExpandoObject();
-
-
                 myObject.id = item.MenuID;
                 myObject.parentid = item.ParentMenuID;
-                myObject.name = item.MenuName;
+                myObject.name = item.Name;
                 myObject.icon = item.Icon;
-                myObject.url = item.MenuURL;
+                myObject.path = item.MenuURL;
+                myObject.component = item.Component;
+                myObject.meta = new
+                {
+                    title = item.MenuName,
+                    icon = item.Icon,
+                    type = "menu"
+                };
                 dynamics.Add(myObject);
             }
             return dynamics;

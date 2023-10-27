@@ -155,7 +155,9 @@ namespace Ideal.Platform.Service
                 Message = msg,
                 IsSuccess = code == 21 ? false : true,
                 Data = modellist.PageList,
-                Total = modellist.Total
+                Total = modellist.Total,
+                PageIndex = modellist.PageIndex,
+                PageSize = modellist.PageSize
             };
             return returnSummary;
         }

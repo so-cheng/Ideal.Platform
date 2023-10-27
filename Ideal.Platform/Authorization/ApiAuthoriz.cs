@@ -18,7 +18,7 @@ namespace Ideal.Platform.Authorization
             }
             //获取传输的Authorize
             var authorize = context.HttpContext.Request.Headers["Authorize"];
-            var UserID = context.HttpContext.Request.Form["userID"];
+            var UserID = context.HttpContext.Request.Headers["userID"];
             //判断传输的Authorize是否为空
             if (string.IsNullOrEmpty(authorize))
             {
@@ -30,6 +30,15 @@ namespace Ideal.Platform.Authorization
                 return;
             }
             string redis = RedisHelper.GetValue((int)RedisType.Authorize, UserID);
+            if (string.IsNullOrEmpty(redis))
+            {
+                ReturnSummary returnSummary = new ReturnSummary();
+                returnSummary.StatusCode = 00;
+                returnSummary.Message = "非法访问！";
+                returnSummary.IsSuccess = false;
+                context.Result = new JsonResult(returnSummary);
+                return;
+            }
             TokenModel tokens = JsonConvert.DeserializeObject<TokenModel>(redis);
             if (string.IsNullOrEmpty(redis) || tokens.Token != authorize)
             {
