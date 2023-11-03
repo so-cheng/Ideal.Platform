@@ -20,6 +20,8 @@ namespace Ideal.Platform.Model
         /// </summary>	
         [DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
         public string MenuID { get; set; }
+        [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
+        public string SystemID { get; set; }
         /// <summary>
         /// 
         /// </summary>	
@@ -65,15 +67,5 @@ namespace Ideal.Platform.Model
         /// </summary>
         [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
         public string Component { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>	
-        [DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
-        public DateTime CreateTime { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>	
-        [DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
-        public string Creator { get; set; }
     }
 }

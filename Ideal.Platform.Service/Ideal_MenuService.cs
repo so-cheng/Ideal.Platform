@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Dynamic;
 using System.Reflection;
 using System.Text;
 
@@ -112,7 +113,7 @@ namespace Ideal.Platform.Service
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public ReturnSummary GetMenuList(MenuQuery query)
+        public ReturnSummary GetMenuPageList(MenuQuery query)
         {
             int code = 21;
             string msg = string.Empty;
@@ -143,15 +144,69 @@ namespace Ideal.Platform.Service
             Ideal_MenuBLL ideal_MenuBLL = new Ideal_MenuBLL();
             List<Ideal_MenuModel> model = new List<Ideal_MenuModel>();
             model = ideal_MenuBLL.GetMenuAllList(query, out code, out msg);
+
+            List<dynamic> roleMenus = GetMenuList(model);
+            List<dynamic> returnMenu = GetWebMenuList(roleMenus);
+
             ReturnSummary returnSummary = new ReturnSummary()
             {
                 StatusCode = code,
                 Message = msg,
                 IsSuccess = code == 21 ? false : true,
-                Data = model
+                Data = returnMenu
             };
             return returnSummary;
         }
         #endregion
+
+
+        private List<object> GetMenuList(List<Ideal_MenuModel> list)
+        {
+            List<dynamic> dynamics = new List<dynamic>();
+            foreach (var item in list)
+            {
+                dynamic myObject = new ExpandoObject();
+                myObject.id = item.MenuID;
+                myObject.parentid = item.ParentMenuID;
+                myObject.name = item.Name;
+                myObject.icon = item.Icon;
+                myObject.path = item.MenuURL;
+                myObject.menuSort = item.MenuSort;
+                myObject.systemID = item.SystemID;
+                myObject.component = item.Component;
+                myObject.hidden = item.IsDisplay == "y" ?true:false;
+                myObject.meta = new
+                {
+                    title = item.MenuName,
+                    icon = item.Icon,
+                    type = "menu"
+                };
+                dynamics.Add(myObject);
+            }
+            return dynamics;
+        }
+
+        private List<dynamic> GetWebMenuList(List<dynamic> webs)
+        {
+            var list = webs.Where(a => string.IsNullOrEmpty(a.parentid)).ToList();
+            foreach (var item in list)
+            {
+                AddChildMenu(item, webs);
+            }
+            return list;
+        }
+        private void AddChildMenu(dynamic webMenu, List<dynamic> webMenus)
+        {
+            List<dynamic> list = webMenus.Where(a => a.parentid == webMenu.id).ToList();
+            if (list.Count > 0)
+            {
+                webMenu.children = list;
+            }
+            foreach (var item in list)
+            {
+                AddChildMenu(item, webMenus);
+            }
+
+        }
     }
 }

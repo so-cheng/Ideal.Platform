@@ -68,7 +68,7 @@ namespace Ideal.Platform.Controllers
         public JsonResult GetMenuList(MenuQuery query)
         {
             Ideal_MenuService ideal_CompanyService = new Ideal_MenuService();
-            ReturnSummary returnSummary = ideal_CompanyService.GetMenuList(query);
+            ReturnSummary returnSummary = ideal_CompanyService.GetMenuPageList(query);
             return Json(returnSummary);
         }
         /// <summary>

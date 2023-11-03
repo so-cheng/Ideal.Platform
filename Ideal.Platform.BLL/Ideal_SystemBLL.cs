@@ -215,7 +215,7 @@ namespace Ideal.Platform.BLL
             msg = "查询失败！";
             List<Ideal_SystemModel> pageModel = new List<Ideal_SystemModel>();
             PageQueryParam param = new PageQueryParam();
-            param.SqlBody = " Ideal_System as a Left Join Ideal_Company as b on a.ConpanyID = b.CompanyID";
+            param.SqlBody = " Ideal_System as a Left Join Ideal_Company as b on a.CompanyID = b.CompanyID";
             param.SqlColumn = " a.*,b.CompanyName";
             if (!string.IsNullOrEmpty(query.SystemName))
             {
