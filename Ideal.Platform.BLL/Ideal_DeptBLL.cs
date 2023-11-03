@@ -5,6 +5,7 @@ using Ideal.Platform.Model;
 using Ideal.Platform.Model.Query;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,6 @@ namespace Ideal.Platform.BLL
             code = 11;
             msg = "添加失败！";
             model.DeptID = SnowFlakeUse.GetSnowflakeID();
-            model.CreateTime = DateTime.Now;
             Ideal_DeptModel dept = new Ideal_DeptModel();
             dept = GetDeptDetailByName(model.DeptName, out int xcode, out string xmsg);
             if (xcode == 20)
@@ -206,8 +206,8 @@ namespace Ideal.Platform.BLL
             List<Ideal_DeptModel> list = new List<Ideal_DeptModel>();
             PageQueryParam param = new PageQueryParam();
             param.WithNoLock = true;
-            param.SqlBody = " Ideal_Dept a Left Join Ideal_Company b ";
-            param.SqlColumn = "a.*,b.CompangName";
+            param.SqlBody = " Iedal_Dept a Left Join Ideal_CompanyDept b  ON a.DeptID = b.DeptID LEFT JOIN Ideal_Company c ON b.CompanyID = c.CompanyID ";
+            param.SqlColumn = "a.*,c.CompanyName,c.CompanyID";
             param.PageSize = query.PageSize;
             param.PageIndex = query.PageIndex;
             if (!string.IsNullOrEmpty(query.DeptCode))
@@ -269,7 +269,7 @@ namespace Ideal.Platform.BLL
                 }
             }
             return listtree;
-        }
+        }   
         #endregion
     }
 }

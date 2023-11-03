@@ -14,7 +14,9 @@ namespace Ideal.Platform.Model
 		{
 
 			this.Owner_DB_TableName = "Iedal_Dept";
-		}
+			Children = new List<Ideal_DeptModel>();
+
+        }
 		/// <summary>
 		/// 
 		/// </summary>	
@@ -33,7 +35,7 @@ namespace Ideal.Platform.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		[DbFieldAttribute(DbFieldMode.ALL_SAVE)]
+		[DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
 		public string CompanyID { get; set; }
         /// <summary>
         /// 
@@ -57,18 +59,11 @@ namespace Ideal.Platform.Model
 		public string Landline { get; set; }
 		/// <summary>
 		/// 
-		/// </summary>	
-		[DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
-		public DateTime CreateTime { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>	
-		[DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
-		public string Creator { get; set; }
-		/// <summary>
-		/// 
 		/// </summary>
 		[DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
 		public string CompanyName { get; set; }
-	}
+
+        [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
+        public List<Ideal_DeptModel> Children { get; set; }
+    }
 }

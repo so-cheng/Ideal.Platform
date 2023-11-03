@@ -65,7 +65,7 @@ namespace Ideal.Platform.Controllers
         public JsonResult GetDeptList(DeptQuery query)
         {
             Ideal_DeptService ideal_DeptService = new Ideal_DeptService();
-            ReturnSummary returnSummary = ideal_DeptService.GetDeptList(query);
+            ReturnSummary returnSummary = ideal_DeptService.GetDeptPageList(query);
             return Json(returnSummary);
         }
         /// <summary>

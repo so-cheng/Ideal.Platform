@@ -18,7 +18,7 @@ namespace Ideal.Platform.Model
         /// <summary>
         /// 
         /// </summary>	
-        [DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
+        [DbFieldAttribute(DbFieldMode.PRIMARY_KEY)]
         public string MenuID { get; set; }
         [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
         public string SystemID { get; set; }

@@ -28,7 +28,15 @@ namespace Ideal.Platform.BLL
             msg = "添加失败！";
             bool flag = false;
             model.MenuID = SnowFlakeUse.GetSnowflakeID();
-            model.CreateTime = DateTime.Now;
+            List<Ideal_MenuModel> list = GetMenuAllList(new MenuQuery() { MenuName = model.MenuName }, out code, out msg);
+            if (code == 20)
+            {
+                if (list[0].ParentMenuID == model.ParentMenuID)
+                {
+                    msg = "菜单名称不能重复！";
+                    return false;
+                }
+            }
             flag = BaseControl.InsertDB<Ideal_MenuModel>(model, out code, out msg);
             code = flag ? 10 : 11;
             msg = flag ? "新增成功！" : "新增失败！";
@@ -48,11 +56,20 @@ namespace Ideal.Platform.BLL
             bool flag = false;
             Ideal_MenuModel ideal_Menu = new Ideal_MenuModel();
             ideal_Menu = GetMenuDetailByID(model.MenuID, out code, out msg);
-            if (code == 20)
+            if (code != 20)
             {
                 code = 11;
                 msg = "没有找到此菜单";
                 return false;
+            }
+            List<Ideal_MenuModel> list = GetMenuAllList(new MenuQuery() { MenuName = model.MenuName }, out code, out msg);
+            if (code == 20)
+            {
+                if (list[0].ParentMenuID == model.ParentMenuID && list[0].MenuID != model.MenuID)
+                {
+                    msg = "菜单名称不能重复！";
+                    return false;
+                }
             }
             flag = BaseControl.UpdateDB<Ideal_MenuModel>(model, out code, out msg);
             code = flag ? 10 : 11;
@@ -70,14 +87,20 @@ namespace Ideal.Platform.BLL
         public bool DeleteMenu(string MenuID, out int code, out string msg)
         {
             code = 11;
-            msg = "修改失败！";
+            msg = "删除失败！";
             bool flag = false;
             Ideal_MenuModel model = new Ideal_MenuModel();
             model = GetMenuDetailByID(MenuID, out code, out msg);
-            if (code == 20)
+            if (code != 20)
             {
                 code = 11;
                 msg = "没有找到此菜单";
+                return false;
+            }
+            List<Ideal_MenuModel> list = GetMenuAllList(new MenuQuery() { ParentMenuID = model.MenuID }, out code, out msg);
+            if (list.Count > 0)
+            {
+                msg = "当前菜单下含有子菜单,不能删除!";
                 return false;
             }
             flag = BaseControl.Delete2DB<Ideal_MenuModel>(model, out code, out msg);
@@ -156,6 +179,10 @@ namespace Ideal.Platform.BLL
             if (!string.IsNullOrEmpty(query.SystemID))
             {
                 param.SqlWhere += " AND SystemID = '" + query.SystemID + "'";
+            }
+            if (!string.IsNullOrEmpty(query.ParentMenuID))
+            {
+                param.SqlWhere += " AND ParentMenuID = '" + query.ParentMenuID + "'";
             }
             list = BaseControl.GetAllModels<Ideal_MenuModel>(param, out code, out msg);
             return list;

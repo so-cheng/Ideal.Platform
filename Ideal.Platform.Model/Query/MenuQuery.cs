@@ -12,5 +12,7 @@ namespace Ideal.Platform.Model.Query
         public string SystemID { get; set; }
 
         public string MenuName { get; set; }
+
+        public string ParentMenuID { get; set; }
     }
 }
