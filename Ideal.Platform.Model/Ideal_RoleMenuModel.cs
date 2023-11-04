@@ -18,7 +18,7 @@ namespace Ideal.Platform.Model
 		/// <summary>
 		/// 
 		/// </summary>	
-		[DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
+		[DbFieldAttribute(DbFieldMode.PRIMARY_KEY)]
 		public string FlowID { get; set; }
 		/// <summary>
 		/// 
@@ -30,16 +30,6 @@ namespace Ideal.Platform.Model
 		/// </summary>	
 		[DbFieldAttribute(DbFieldMode.ALL_SAVE)]
 		public string MenuID { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>	
-		[DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
-		public DateTime CreateTime { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>	
-		[DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
-		public string Creator { get; set; }
 
 		[DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
 		public string MenuName { get; set; }
@@ -71,17 +61,17 @@ namespace Ideal.Platform.Model
         /// <summary>
         /// 
         /// </summary>
-        [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
+        [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
         public string Name { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
+        [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
         public string Type { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
+        [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
         public string Component { get; set; }
     }
 }

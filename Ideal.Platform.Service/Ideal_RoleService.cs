@@ -28,6 +28,7 @@ namespace Ideal.Platform.Service
             int code = 11;
             string msg = string.Empty;
             Ideal_RoleBLL ideal_CompanyBLL = new Ideal_RoleBLL();
+
             flag = ideal_CompanyBLL.InsertRole(model, out code, out msg);
            
             ReturnSummary rs = new ReturnSummary()

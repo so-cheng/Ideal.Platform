@@ -26,17 +26,25 @@ namespace Ideal.Platform.BLL
             dept = GetDeptDetailByName(model.DeptName, out int xcode, out string xmsg);
             if (xcode == 20)
             {
-                code = 11;
-                msg = "添加失败！部门名称不能重复！";
+                if (dept.ParentDeptID == model.ParentDeptID)
+                {
+                    code = 11;
+                    msg = "添加失败！部门名称不能重复！";
+                    return false;
+                }
             }
             dept = GetDeptDetailByCode(model.DeptCode, out xcode, out xmsg);
             if (xcode == 20)
             {
-                code = 11;
-                msg = "查询失败！部门编码不能重复！";
+
+                if (dept.ParentDeptID == model.ParentDeptID)
+                {
+                    code = 11;
+                    msg = "查询失败！部门编码不能重复！";
+                    return false;
+                }
             }
             flag = BaseControl.InsertDB<Ideal_DeptModel>(model, out code, out msg);
-
             code = flag ? 10 : 11;
             msg = flag ? "添加成功！" : "添加失败！";
             return flag;
@@ -55,21 +63,21 @@ namespace Ideal.Platform.BLL
             code = 11;
             msg = "修改失败！";
             Ideal_DeptModel dept = new Ideal_DeptModel();
-            dept = GetDeptDetailByID(model.DeptName, out int xcode, out string xmsg);
-            if (xcode == 20)
+            dept = GetDeptDetailByID(model.DeptID, out int xcode, out string xmsg);
+            if (xcode != 20)
             {
                 code = 11;
-                msg = "没有找到次部门数据！";
+                msg = "没有找到此部门数据！";
                 return false;
             }
             dept = GetDeptDetailByName(model.DeptName, out xcode, out xmsg);
-            if (xcode == 20 && dept.DeptID != model.DeptID)
+            if (xcode == 20 && dept.DeptID != model.DeptID && dept.ParentDeptID == model.ParentDeptID)
             {
                 code = 11;
                 msg = "添加失败！部门名称不能重复！";
             }
             dept = GetDeptDetailByCode(model.DeptCode, out xcode, out xmsg);
-            if (xcode == 20 && dept.DeptID != model.DeptID)
+            if (xcode == 20 && dept.DeptID != model.DeptID && dept.ParentDeptID == model.ParentDeptID)
             {
                 code = 11;
                 msg = "查询失败！部门编码不能重复！";
@@ -93,7 +101,7 @@ namespace Ideal.Platform.BLL
             msg = "修改失败！";
             Ideal_DeptModel dept = new Ideal_DeptModel();
             dept = GetDeptDetailByID(DeptID, out int xcode, out string xmsg);
-            if (xcode == 20)
+            if (xcode != 20)
             {
                 code = 11;
                 msg = "没有找到次部门数据！";
@@ -206,8 +214,8 @@ namespace Ideal.Platform.BLL
             List<Ideal_DeptModel> list = new List<Ideal_DeptModel>();
             PageQueryParam param = new PageQueryParam();
             param.WithNoLock = true;
-            param.SqlBody = " Iedal_Dept a Left Join Ideal_CompanyDept b  ON a.DeptID = b.DeptID LEFT JOIN Ideal_Company c ON b.CompanyID = c.CompanyID ";
-            param.SqlColumn = "a.*,c.CompanyName,c.CompanyID";
+            //param.SqlBody = " Iedal_Dept a  LEFT JOIN Ideal_Company b ON a.CompanyID = b.CompanyID ";
+            //param.SqlColumn = "a.*,b.CompanyName";
             param.PageSize = query.PageSize;
             param.PageIndex = query.PageIndex;
             if (!string.IsNullOrEmpty(query.DeptCode))
@@ -218,10 +226,10 @@ namespace Ideal.Platform.BLL
             {
                 param.SqlWhere += " AND a.DeptName like '%" + query.DeptName + "%'";
             }
-            if (!string.IsNullOrEmpty(query.CompanyID))
-            {
-                param.SqlWhere += " AND a.CompanyID like '%" + query.CompanyID + "%'";
-            }
+            //if (!string.IsNullOrEmpty(query.CompanyID))
+            //{
+            //    param.SqlWhere += " AND a.CompanyID like '%" + query.CompanyID + "%'";
+            //}
             list = BaseControl.GetAllModels<Ideal_DeptModel>(param, out code, out msg);
             return list;
         }

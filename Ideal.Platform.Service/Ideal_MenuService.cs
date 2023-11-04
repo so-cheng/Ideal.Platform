@@ -172,7 +172,6 @@ namespace Ideal.Platform.Service
                 myObject.icon = item.Icon;
                 myObject.path = item.MenuURL;
                 myObject.menuSort = item.MenuSort;
-                myObject.systemID = item.SystemID;
                 myObject.component = item.Component;
                 myObject.hidden = item.IsDisplay == "y" ?true:false;
                 myObject.meta = new

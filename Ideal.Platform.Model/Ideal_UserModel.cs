@@ -109,7 +109,7 @@ namespace Ideal.Platform.Model
         /// 
         /// </summary>	
         [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
-        public string AccumulationFundID { get; set; }
+        public string AccumulationFund { get; set; }
         /// <summary>
         /// 
         /// </summary>	
@@ -119,7 +119,7 @@ namespace Ideal.Platform.Model
         /// 
         /// </summary>	
         [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
-        public string SalaryID { get; set; }
+        public string Salary { get; set; }
         /// <summary>
         /// 
         /// </summary>	
@@ -146,16 +146,7 @@ namespace Ideal.Platform.Model
         public decimal IDCardType { get; set; }
         [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
         public string IDCardTypeName { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>	
-        [DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
-        public DateTime CreateTime { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>	
-        [DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
-        public string Creator { get; set; }
+
         [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
         public string PostID { get; set; }
         [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
@@ -164,6 +155,13 @@ namespace Ideal.Platform.Model
         public string RoleID { get; set; }
         [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
         public string RoleName { get; set; }
+        [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
+        public string AccountName { get; set; }
+        [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
+        public string PassWord { get; set; }
+        [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
+        public decimal AccountLevel { get; set; }
+        
     }
 }
 

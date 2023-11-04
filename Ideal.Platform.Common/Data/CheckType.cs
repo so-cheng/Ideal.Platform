@@ -13,12 +13,12 @@ namespace Ideal.Platform.Common.Data
         /// 成本
         /// </summary>
         public const string Cost = "0";
-        public const string Cost_CH = "正常";
+        public const string Cost_CH = "成本";
         
         /// <summary>
         /// 管理
         /// </summary>
         public const string Management = "1";
-        public const string Management_CH = "禁用";
+        public const string Management_CH = "管理";
     }
 }

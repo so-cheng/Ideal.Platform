@@ -27,8 +27,6 @@ namespace Ideal.Platform.BLL
             code = 11;
             msg = "添加失败！";
             bool flag = false;
-            model.RoleID = SnowFlakeUse.GetSnowflakeID();
-            model.CreateTime = DateTime.Now;
             Ideal_RoleModel ideal_RoleModel = new Ideal_RoleModel();
             ideal_RoleModel = GetRoleDetailByName(model.RoleName, out code, out msg);
             if (code == 20)
@@ -37,6 +35,7 @@ namespace Ideal.Platform.BLL
                 msg = "角色名称不能重复！";
                 return false;
             }
+            model.RoleID = SnowFlakeUse.GetSnowflakeID();
             flag = BaseControl.InsertDB<Ideal_RoleModel>(model, out code, out msg);
             code = flag ? 10 : 11;
             msg = flag ? "新增成功！" : "新增失败！";
@@ -56,7 +55,7 @@ namespace Ideal.Platform.BLL
             bool flag = false;
             Ideal_RoleModel ideal_RoleModel = new Ideal_RoleModel();
             ideal_RoleModel = GetRoleDetailByID(model.RoleID, out code, out msg);
-            if (code == 20)
+            if (code != 20)
             {
                 code = 11;
                 msg = "没有找到此角色！";
@@ -86,7 +85,7 @@ namespace Ideal.Platform.BLL
             msg = "删除失败！";
             Ideal_RoleModel ideal_RoleModel = new Ideal_RoleModel();
             ideal_RoleModel = GetRoleDetailByID(RoleID, out code, out msg);
-            if (code == 20)
+            if (code != 20)
             {
                 code = 11;
                 msg = "没有找到此角色！";

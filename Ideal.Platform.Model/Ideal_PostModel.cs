@@ -18,7 +18,7 @@ namespace Ideal.Platform.Model
 		/// <summary>
 		/// 
 		/// </summary>	
-		[DbFieldAttribute(DbFieldMode.ALL_SAVE)]
+		[DbFieldAttribute(DbFieldMode.PRIMARY_KEY)]
 		public string PostID { get; set; }
 		/// <summary>
 		/// 
@@ -50,15 +50,5 @@ namespace Ideal.Platform.Model
 		/// </summary>	
 		[DbFieldAttribute(DbFieldMode.ALL_SAVE)]
 		public decimal PostSalary { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>	
-		[DbFieldAttribute(DbFieldMode.ALL_SAVE)]
-		public DateTime CreateTime { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>	
-		[DbFieldAttribute(DbFieldMode.ALL_SAVE)]
-		public string Creator { get; set; }
 	}
 }

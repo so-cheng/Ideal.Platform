@@ -30,7 +30,7 @@ namespace Ideal.Platform.Model
         /// <summary>
         /// 
         /// </summary>	
-        [DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
+        [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
         public string AccountName { get; set; }
         /// <summary>
         /// 
@@ -66,25 +66,12 @@ namespace Ideal.Platform.Model
         public decimal AccountLevel { get; set; }
         [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
         public string AccountLevelName { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>	
-        [DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
-        public DateTime CreateTime { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>	
-        [DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
-        public string Creator { get; set; }
 
         [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
         public List<dynamic> MenuList { get; set; }
 
         [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
         public string Token { get; set; }
-
-        public List<string> Permissions { get; set; }
-        public List<string> DashboardGrid { get; set; }
     }
 }
 

@@ -21,7 +21,7 @@ namespace Ideal.Platform.Model
 		/// <summary>
 		/// 
 		/// </summary>	
-		[DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
+		[DbFieldAttribute(DbFieldMode.PRIMARY_KEY)]
 		public string RoleID { get; set; }
 		/// <summary>
 		/// 
@@ -33,15 +33,5 @@ namespace Ideal.Platform.Model
 		/// </summary>	
 		[DbFieldAttribute(DbFieldMode.ALL_SAVE)]
 		public string Note { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>	
-		[DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
-		public DateTime CreateTime { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>	
-		[DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
-		public string Creator { get; set; }
 	}
 }

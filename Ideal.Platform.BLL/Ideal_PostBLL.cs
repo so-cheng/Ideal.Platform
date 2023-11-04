@@ -27,8 +27,6 @@ namespace Ideal.Platform.BLL
             msg = "添加失败！";
             bool flag = false;
             model.PostID = SnowFlakeUse.GetSnowflakeID();
-            model.CreateTime = DateTime.Now;
-
             Ideal_PostModel ideal_Post = GetPostDetailByCode(model.PostCode, out code, out msg);
             if (code == 20)
             {
@@ -37,7 +35,7 @@ namespace Ideal.Platform.BLL
                 return false;
             }
             ideal_Post = GetPostDetailByDeptIDAndName(model.PostName, model.DeptID, out code, out msg);
-            if (code == 20)
+            if (code != 20)
             {
                 code = 11;
                 msg = "同一部门下岗位名称不能相同！";
@@ -61,7 +59,7 @@ namespace Ideal.Platform.BLL
             msg = "修改失败！";
             bool flag = false;
             Ideal_PostModel ideal_Post = GetPostDetailByID(model.PostID, out code, out msg);
-            if (code == 20)
+            if (code != 20)
             {
                 code = 11;
                 msg = "没有找到此岗位！";

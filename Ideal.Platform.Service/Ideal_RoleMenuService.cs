@@ -8,6 +8,7 @@ using Ideal.Platform.Common.Data;
 using Ideal.Platform.Model;
 using Ideal.Platform.Model.Query;
 using Newtonsoft.Json;
+using StackExchange.Redis;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
@@ -60,6 +61,23 @@ namespace Ideal.Platform.Service
                 Message = msg,
                 IsSuccess = code == 21 ? false : true,
                 Data = model
+            };
+            return returnSummary;
+        }
+        public ReturnSummary GerUserRomeMenu(string RoleID)
+        {
+            int code = 21;
+            string msg = string.Empty;
+            Ideal_RoleMenuBLL ideal_RoleMenuBLL = new Ideal_RoleMenuBLL();
+            List<Ideal_RoleMenuModel> model = new List<Ideal_RoleMenuModel>();
+            model = ideal_RoleMenuBLL.GerUserRomeMenu(RoleID, out code, out msg);
+            string[] userRole = model.Select(a => a.MenuID).ToArray();
+            ReturnSummary returnSummary = new ReturnSummary()
+            {
+                StatusCode = code,
+                Message = msg,
+                IsSuccess = code == 21 ? false : true,
+                Data = userRole
             };
             return returnSummary;
         }

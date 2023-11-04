@@ -20,8 +20,6 @@ namespace Ideal.Platform.Model
         /// </summary>	
         [DbFieldAttribute(DbFieldMode.PRIMARY_KEY)]
         public string MenuID { get; set; }
-        [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
-        public string SystemID { get; set; }
         /// <summary>
         /// 
         /// </summary>	

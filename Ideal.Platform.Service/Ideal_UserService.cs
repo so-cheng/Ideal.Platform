@@ -7,6 +7,7 @@ using Ideal.Platform.BLL;
 using Ideal.Platform.Common.Data;
 using Ideal.Platform.Model;
 using Ideal.Platform.Model.Query;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System.Data;
 using System.Data.Common;
@@ -26,13 +27,13 @@ namespace Ideal.Platform.Service
         /// <param name="model"></param>
         /// <param name="postModel"></param>
         /// <returns></returns>
-        public ReturnSummary InsertUser(Ideal_UserModel model, Ideal_UserPostModel postModel)
+        public ReturnSummary InsertUser(Ideal_UserModel model)
         {
             bool flag = false;
             int code = 11;
             string msg = string.Empty;
             Ideal_UserBLL ideal_UserBLL = new Ideal_UserBLL();
-            flag = ideal_UserBLL.InsertUser(model, postModel, out code, out msg);
+            flag = ideal_UserBLL.InsertUser(model, out code, out msg);
 
             ReturnSummary rs = new ReturnSummary()
             {
@@ -132,7 +133,7 @@ namespace Ideal.Platform.Service
             Ideal_UserBLL ideal_UserBLL = new Ideal_UserBLL();
             PageModel<Ideal_UserModel> modellist = new PageModel<Ideal_UserModel>();
             modellist = ideal_UserBLL.GetUserList(userQuery, out code, out msg);
-            List<Ideal_UserModel> list = modellist.Data as List<Ideal_UserModel>;
+            List<Ideal_UserModel> list = modellist.PageList;
             if (code == 20)
             {
                 if (list.Count > 0)
@@ -145,6 +146,7 @@ namespace Ideal.Platform.Service
                         model.IDCardTypeName = GetData.IDCardTypeList().SingleOrDefault(a => a.Key == Convert.ToInt32(model.IDCardType).ToString())?.Value;
                         model.EducationName = GetData.MyEducationDegreeList().SingleOrDefault(a => a.Key == Convert.ToInt32(model.Education).ToString())?.Value;
                         model.PoliticalStatusName = GetData.PoliticalStatusList().SingleOrDefault(a => a.Key == Convert.ToInt32(model.PoliticalStatus).ToString())?.Value;
+                       
                     }
                 }
 

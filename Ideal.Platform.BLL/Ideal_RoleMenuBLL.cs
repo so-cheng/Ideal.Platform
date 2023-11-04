@@ -3,6 +3,7 @@ using Ideal.Ideal.Model;
 using Ideal.Platform.Common.Snowflake;
 using Ideal.Platform.Model;
 using Ideal.Platform.Model.Query;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +45,6 @@ namespace Ideal.Platform.BLL
             foreach (var item in listmodel)
             {
                 item.FlowID = SnowFlakeUse.GetSnowflakeID();
-                item.CreateTime = DateTime.Now;
                 sqllist.Add(BaseControl.GetInsert2DBSQL(item));
             }
             int count = BaseControl.ExecuteSqlTran(sqllist, out code, out msg);
@@ -79,6 +79,18 @@ namespace Ideal.Platform.BLL
             param.SqlBody = " Ideal_RoleMenu as a Left Join Ideal_Menu as b  on a.MenuID = b.MenuID ";
             param.SqlColumn = "a.*,b.MenuName,b.MenuURL,b.ParentMenuID,b.MenuSort,b.Icon,b.IsDisplay,b.Name,b.Type,b.Component";
             param.SqlWhere = " AND a.RoleID = '" + RoleID + "'";
+            result = BaseControl.GetAllModels<Ideal_RoleMenuModel>(param, out code, out msg);
+            return result;
+        }
+
+        public List<Ideal_RoleMenuModel> GerUserRomeMenu(string RoleID, out int code, out string msg)
+        {
+            code = 21;
+            msg = "查询失败！";
+            List<Ideal_RoleMenuModel> result = new List<Ideal_RoleMenuModel>();
+            PageQueryParam param = new PageQueryParam();
+            param.WithNoLock = true;
+            param.SqlWhere = " AND RoleID = '" + RoleID + "'";
             result = BaseControl.GetAllModels<Ideal_RoleMenuModel>(param, out code, out msg);
             return result;
         }

@@ -1,5 +1,6 @@
 ﻿using Ideal.Ideal.DB.Base;
 using Ideal.Ideal.Model;
+using Ideal.Platform.Common.MD5;
 using Ideal.Platform.Common.Snowflake;
 using Ideal.Platform.Model;
 using Ideal.Platform.Model.Query;
@@ -22,15 +23,12 @@ namespace Ideal.Platform.BLL
         /// <param name="code"></param>
         /// <param name="msg"></param>
         /// <returns></returns>
-        public bool InsertUser(Ideal_UserModel model, Ideal_UserPostModel postModel, out int code, out string msg)
+        public bool InsertUser(Ideal_UserModel model, out int code, out string msg)
         {
             code = 11;
             msg = "添加失败！";
             bool flag = false;
             model.UserID = SnowFlakeUse.GetSnowflakeID();
-            model.CreateTime = DateTime.Now;
-            postModel.FlowID = SnowFlakeUse.GetSnowflakeID();
-            postModel.CreateTime = DateTime.Now;
             Ideal_UserModel ideal_RoleModel = new Ideal_UserModel();
             ideal_RoleModel = GetUserDetailByUserIDCard(model.UserIDCard, out code, out msg);
             if (code == 20)
@@ -46,9 +44,17 @@ namespace Ideal.Platform.BLL
                 msg = "人员编号不能重复！";
                 return false;
             }
+
+            Ideal_AccountModel account = new Ideal_AccountModel();
+            account.AccountName = model.AccountName;
+            account.Password = MD5.Encrypt(model.PassWord);
+            account.RoleID = model.RoleID;
+            account.UserID = model.UserID;
+            account.AccountStatus = 0;
+            account.AccountLevel = model.AccountLevel;
             List<string> sqlList = new List<string>();
             sqlList.Add(BaseControl.GetInsert2DBSQL(model));
-            sqlList.Add(BaseControl.GetInsert2DBSQL(postModel));
+            sqlList.Add(BaseControl.GetInsert2DBSQL(account));
             int count = BaseControl.ExecuteSqlTran(sqlList, out code, out msg);
             code = count > 0 ? 10 : 11;
             msg = count > 0 ? "新增成功！" : "新增失败！";
@@ -226,8 +232,8 @@ namespace Ideal.Platform.BLL
             PageModel<Ideal_UserModel> list = new PageModel<Ideal_UserModel>();
             PageQueryParam param = new PageQueryParam();
             param.WithNoLock = true;
-            param.SqlBody = " Ideal_User as a Left Join  Ideal_UserPost as b on a.UserID = b.UserID Left Join Ideal_Post as c on b.PostID = c.PostID Left Join Ideal_Dept as d on d.DeptID = a.DeptID";
-            param.SqlColumn = "a.*,c.PostName,d.DeptName ";
+            param.SqlBody = " Ideal_User as a Left Join Ideal_Dept as d on d.DeptID = a.DeptID LEFT JOIN Ideal_Account b ON a.UserID = b.UserID LEFT JOIN Ideal_Role c ON b.RoleID = c.RoleID";
+            param.SqlColumn = "a.*,d.DeptName,c.RoleID,c.RoleName,b.AccountName";
             param.PageSize = query.PageSize;
             param.PageIndex = query.PageIndex;
             if (!string.IsNullOrEmpty(query.UserName))

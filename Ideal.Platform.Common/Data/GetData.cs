@@ -17,7 +17,7 @@ namespace Ideal.Platform.Common.Data
             list.Add(new KeyValue() { Key = Sex.MToF, Value = Sex.MToF_CH });
             list.Add(new KeyValue() { Key = Sex.FToM, Value = Sex.FToM_CH });
             list.Add(new KeyValue() { Key = Sex.UnDesc, Value = Sex.UnDesc_CH });
-            list.Add(new KeyValue() { Key = Sex.Unknown, Value = Sex.Unknown });
+            list.Add(new KeyValue() { Key = Sex.Unknown, Value = Sex.Unknown_CH });
             return list;
         }
         public static List<KeyValue> UserStatusList()

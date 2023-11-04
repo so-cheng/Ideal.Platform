@@ -128,29 +128,29 @@ namespace Ideal.Platform.Service
             int code = 21;
             string msg = string.Empty;
             Ideal_DeptBLL bll = new Ideal_DeptBLL();
-            Ideal_CompanyBLL cbll = new Ideal_CompanyBLL();
-            List<Ideal_CompanyModel> company = cbll.GetCompanyAllList(new CompanyQuery(), out code, out msg);
-            List<Ideal_DeptModel> cdept = new List<Ideal_DeptModel>();
-            foreach (var item in company)
-            {
-                Ideal_DeptModel model = new Ideal_DeptModel()
-                {
-                    DeptID = item.CompanyID,
-                    DeptName = item.CompanyName,
-                    ParentDeptID = "",
-                    CompanyID = item.CompanyID
-                };
-                cdept.Add(model);
-            }
+            //Ideal_CompanyBLL cbll = new Ideal_CompanyBLL();
+            //List<Ideal_CompanyModel> company = cbll.GetCompanyAllList(new CompanyQuery(), out code, out msg);
+            //List<Ideal_DeptModel> cdept = new List<Ideal_DeptModel>();
+            //foreach (var item in company)
+            //{
+            //    Ideal_DeptModel model = new Ideal_DeptModel()
+            //    {
+            //        DeptID = item.CompanyID,
+            //        DeptName = item.CompanyName,
+            //        ParentDeptID = "",
+            //        CompanyID = item.CompanyID
+            //    };
+            //    cdept.Add(model);
+            //}
             List<Ideal_DeptModel> list = bll.GetDeptAllList(query, out code, out msg);
-            foreach (var item in list)
-            {
-                if (string.IsNullOrEmpty(item.ParentDeptID))
-                {
-                    item.ParentDeptID = item.CompanyID;
-                }
-            }
-            list.AddRange(cdept);
+            //foreach (var item in list)
+            //{
+            //    if (string.IsNullOrEmpty(item.ParentDeptID))
+            //    {
+            //        item.ParentDeptID = item.CompanyID;
+            //    }
+            //}
+            //list.AddRange(cdept);
             List<Ideal_DeptModel> roleMenus = GetDeptList(list);
             List<Ideal_DeptModel> returnMenu = GetWebDeptList(roleMenus);
             returnSummary.IsSuccess = code == 20 ? true : false;

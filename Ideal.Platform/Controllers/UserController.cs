@@ -18,7 +18,7 @@ namespace Ideal.Platform.Controllers
         public JsonResult InsertUser(Ideal_UserModel userModel, Ideal_UserPostModel postModel)
         {
             Ideal_UserService ideal_UserService = new Ideal_UserService();
-            ReturnSummary returnSummary = ideal_UserService.InsertUser(userModel, postModel);
+            ReturnSummary returnSummary = ideal_UserService.InsertUser(userModel);
             return Json(returnSummary);
         }
         /// <summary>
@@ -67,6 +67,14 @@ namespace Ideal.Platform.Controllers
         {
             Ideal_UserService ideal_UserService = new Ideal_UserService();
             ReturnSummary returnSummary = ideal_UserService.GetUserList(query);
+            List<Ideal_UserModel> list = returnSummary.Data as List<Ideal_UserModel>;
+            if (list!= null && list.Count>0)
+            {
+                foreach (var item in list)
+                {
+                    item.HeadImg = "http://" + HttpContext.Request.Host + item.HeadImg;
+                }
+            }
             return Json(returnSummary);
         }
         /// <summary>

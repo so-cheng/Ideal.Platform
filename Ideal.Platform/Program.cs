@@ -27,6 +27,7 @@ builder.Services.AddSession(options =>
     options.Cookie.Name = ".Ideal.Session";
     options.IdleTimeout = TimeSpan.FromSeconds(2000);//����session�Ĺ���ʱ��
     options.Cookie.HttpOnly = true;//���������������ͨ��js��ø�cookie��ֵ 
+
 });
 var app = builder.Build();
 app.UseCors(policyName);
@@ -37,6 +38,7 @@ if (!app.Environment.IsDevelopment())
 }
 ConfigClass.Inti();
 //TimerJob.StarJob(); 
+app.UseFileServer();
 app.UseStaticFiles();
 app.UseHttpsRedirection();
 app.UseSession();

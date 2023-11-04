@@ -13,14 +13,14 @@ namespace Ideal.Platform.Model
 		public Ideal_DeptModel()
 		{
 
-			this.Owner_DB_TableName = "Iedal_Dept";
+			this.Owner_DB_TableName = "Ideal_Dept";
 			Children = new List<Ideal_DeptModel>();
 
         }
 		/// <summary>
 		/// 
 		/// </summary>	
-		[DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
+		[DbFieldAttribute(DbFieldMode.PRIMARY_KEY)]
 		public string DeptID { get; set; }
 		/// <summary>
 		/// 
@@ -35,7 +35,7 @@ namespace Ideal.Platform.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		[DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
+		[DbFieldAttribute(DbFieldMode.ALL_SAVE)]
 		public string CompanyID { get; set; }
         /// <summary>
         /// 

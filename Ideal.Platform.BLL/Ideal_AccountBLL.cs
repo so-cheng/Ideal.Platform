@@ -44,7 +44,6 @@ namespace Ideal.Platform.BLL
                 return false;
             }
             model.Password = MD5.Encrypt(model.Password);
-            model.CreateTime = DateTime.Now;
             flag = BaseControl.InsertDB<Ideal_AccountModel>(model, out code, out msg);
             code = flag ? 10 : 11;
             msg = flag ? "新增成功！" : "新增失败！";

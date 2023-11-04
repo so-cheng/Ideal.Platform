@@ -30,6 +30,7 @@
 
   <ItemGroup>
     <Folder Include="Common\" />
+    <Folder Include="wwwroot\HeadImg\" />
   </ItemGroup>
 
 </Project>
