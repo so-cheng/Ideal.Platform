@@ -57,14 +57,14 @@ namespace Ideal.Platform.Model
         [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
         public decimal AccountStatus { get; set; }
 
-        [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
+        [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
         public string AccountStatusName { get; set; }
         /// <summary>
         /// 
         /// </summary>	
         [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
         public decimal AccountLevel { get; set; }
-        [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
+        [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
         public string AccountLevelName { get; set; }
 
         [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
