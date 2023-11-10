@@ -55,7 +55,7 @@ namespace Ideal.Platform.Model
         /// 
         /// </summary>	
         [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
-        public decimal AccountStatus { get; set; }
+        public string AccountStatus { get; set; }
 
         [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
         public string AccountStatusName { get; set; }
@@ -63,7 +63,7 @@ namespace Ideal.Platform.Model
         /// 
         /// </summary>	
         [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
-        public decimal AccountLevel { get; set; }
+        public string AccountLevel { get; set; }
         [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
         public string AccountLevelName { get; set; }
 

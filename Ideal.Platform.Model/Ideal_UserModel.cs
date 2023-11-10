@@ -29,7 +29,7 @@ namespace Ideal.Platform.Model
         /// <summary>
         /// 
         /// </summary>	
-        [DbFieldAttribute(DbFieldMode.ONLY_INSERT)]
+        [DbFieldAttribute(DbFieldMode.PRIMARY_KEY)]
         public string UserID { get; set; }
         /// <summary>
         /// 
@@ -75,7 +75,7 @@ namespace Ideal.Platform.Model
         /// 
         /// </summary>	
         [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
-        public decimal PoliticalStatus { get; set; }
+        public string PoliticalStatus { get; set; }
         [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
         public string PoliticalStatusName { get; set; }
         /// <summary>
@@ -102,7 +102,7 @@ namespace Ideal.Platform.Model
         /// 
         /// </summary>	
         [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
-        public decimal Education { get; set; }
+        public string Education { get; set; }
         [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
         public string EducationName { get; set; }
         /// <summary>
@@ -136,14 +136,14 @@ namespace Ideal.Platform.Model
         /// 
         /// </summary>	
         [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
-        public decimal UserStatus { get; set; }
+        public string UserStatus { get; set; }
         [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
         public string UserStatusName { get; set; }
         /// <summary>
         /// 
         /// </summary>	
         [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
-        public decimal IDCardType { get; set; }
+        public string IDCardType { get; set; }
         [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
         public string IDCardTypeName { get; set; }
 
@@ -160,8 +160,12 @@ namespace Ideal.Platform.Model
         [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
         public string PassWord { get; set; }
         [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
-        public decimal AccountLevel { get; set; }
-        
+        public string AccountLevel { get; set; }
+        [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
+        public string AccountStatus { get; set; }
+        [DbFieldAttribute(DbFieldMode.NEVER_SAVE)]
+        public string AccountStatusName { get; set; }
+
     }
 }
 

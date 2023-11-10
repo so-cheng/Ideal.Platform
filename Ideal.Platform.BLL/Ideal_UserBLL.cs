@@ -50,7 +50,7 @@ namespace Ideal.Platform.BLL
             account.Password = MD5.Encrypt(model.PassWord);
             account.RoleID = model.RoleID;
             account.UserID = model.UserID;
-            account.AccountStatus = 0;
+            account.AccountStatus = "0";
             account.AccountLevel = model.AccountLevel;
             List<string> sqlList = new List<string>();
             sqlList.Add(BaseControl.GetInsert2DBSQL(model));
@@ -68,7 +68,7 @@ namespace Ideal.Platform.BLL
         /// <param name="code"></param>
         /// <param name="msg"></param>
         /// <returns></returns>
-        public bool UpdateUser(Ideal_UserModel model, Ideal_UserPostModel postModel, out int code, out string msg)
+        public bool UpdateUser(Ideal_UserModel model, out int code, out string msg)
         {
             code = 11;
             msg = "修改失败！";
@@ -96,15 +96,11 @@ namespace Ideal.Platform.BLL
                 return false;
             }
             List<string> sqlList = new List<string>();
-            Ideal_UserPostModel ideal_UserPostModel = new Ideal_UserPostModel();
-            ideal_UserPostModel = GetUserPostDetailByUserID(postModel.UserID, out code, out msg);
-            sqlList.Add(BaseControl.GetDeleteFromDBSQL(ideal_UserPostModel));//删除人员角色
-            sqlList.Add(BaseControl.GetUpdate2DBSQL(model));//修改人员
-            sqlList.Add(BaseControl.GetInsert2DBSQL(postModel));//添加人员角色
-            int count = BaseControl.ExecuteSqlTran(sqlList, out code, out msg);
-            code = count > 0 ? 10 : 11;
-            msg = count > 0 ? "修改成功！" : "修改失败！";
-            return flag;
+            //sqlList.Add(BaseControl.GetUpdate2DBSQL(model));//修改人员
+            bool count = BaseControl.UpdateDB<Ideal_UserModel>(model, out code, out msg);
+            code = count ? 10 : 11;
+            msg = count ? "修改成功！" : "修改失败！";
+            return count;
         }
         /// <summary>
         /// 删除人员
@@ -212,9 +208,9 @@ namespace Ideal.Platform.BLL
             Ideal_UserModel ideal_UserModel = new Ideal_UserModel();
             PageQueryParam parm = new PageQueryParam();
             parm.WithNoLock = true;
-            parm.SqlBody = " Ideal_User as a Left Join  Ideal_UserPost as b on a.UserID = b.UserID Left Join Ideal_Post as c on b.PostID = c.PostID Left Join Ideal_Dept as d on d.DeptID = a.DeptID";
-            parm.SqlColumn = "a.*,c.PostName,d.DeptName ";
-            parm.SqlWhere = " AND UserID = '" + UserID + "'";
+            parm.SqlBody = " Ideal_User as a Left Join Ideal_Dept as d on d.DeptID = a.DeptID LEFT JOIN Ideal_Account b ON a.UserID = b.UserID LEFT JOIN Ideal_Role c ON b.RoleID = c.RoleID";
+            parm.SqlColumn = "a.*,d.DeptName,c.RoleID,c.RoleName,b.AccountName,b.AccountStatus,b.AccountLevel";
+            parm.SqlWhere = " AND a.UserID = '" + UserID + "'";
             ideal_UserModel = BaseControl.GetModel<Ideal_UserModel>(parm, out code, out msg);
             return ideal_UserModel;
         }
@@ -233,7 +229,7 @@ namespace Ideal.Platform.BLL
             PageQueryParam param = new PageQueryParam();
             param.WithNoLock = true;
             param.SqlBody = " Ideal_User as a Left Join Ideal_Dept as d on d.DeptID = a.DeptID LEFT JOIN Ideal_Account b ON a.UserID = b.UserID LEFT JOIN Ideal_Role c ON b.RoleID = c.RoleID";
-            param.SqlColumn = "a.*,d.DeptName,c.RoleID,c.RoleName,b.AccountName";
+            param.SqlColumn = "a.*,d.DeptName,c.RoleID,c.RoleName,b.AccountName,b.AccountStatus,b.AccountLevel";
             param.PageSize = query.PageSize;
             param.PageIndex = query.PageIndex;
             if (!string.IsNullOrEmpty(query.UserName))

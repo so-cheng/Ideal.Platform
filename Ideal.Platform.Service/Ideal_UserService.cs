@@ -50,14 +50,14 @@ namespace Ideal.Platform.Service
         /// <param name="model"></param>
         /// <param name="postModel"></param>
         /// <returns></returns>
-        public ReturnSummary UpdateUser(Ideal_UserModel model, Ideal_UserPostModel postModel)
+        public ReturnSummary UpdateUser(Ideal_UserModel model)
         {
 
             bool flag = false;
             int code = 11;
             string msg = string.Empty;
             Ideal_UserBLL ideal_UserBLL = new Ideal_UserBLL();
-            flag = ideal_UserBLL.UpdateUser(model, postModel, out code, out msg);
+            flag = ideal_UserBLL.UpdateUser(model, out code, out msg);
 
             ReturnSummary rs = new ReturnSummary()
             {
@@ -141,12 +141,13 @@ namespace Ideal.Platform.Service
                     foreach (var model in list)
                     {
                         model.SexName = GetData.SexList().SingleOrDefault(a => a.Key == model.Sex)?.Value;
-                        model.UserStatusName = GetData.UserStatusList().SingleOrDefault(a => a.Key == Convert.ToInt32(model.UserStatus).ToString())?.Value;
+                        model.UserStatusName = GetData.UserStatusList().SingleOrDefault(a => a.Key ==model.UserStatus)?.Value;
                         model.CheckTypeName = GetData.CheckTypeList().SingleOrDefault(a => a.Key == model.CheckType)?.Value;
-                        model.IDCardTypeName = GetData.IDCardTypeList().SingleOrDefault(a => a.Key == Convert.ToInt32(model.IDCardType).ToString())?.Value;
-                        model.EducationName = GetData.MyEducationDegreeList().SingleOrDefault(a => a.Key == Convert.ToInt32(model.Education).ToString())?.Value;
-                        model.PoliticalStatusName = GetData.PoliticalStatusList().SingleOrDefault(a => a.Key == Convert.ToInt32(model.PoliticalStatus).ToString())?.Value;
-                       
+                        model.IDCardTypeName = GetData.IDCardTypeList().SingleOrDefault(a => a.Key ==model.IDCardType)?.Value;
+                        model.EducationName = GetData.MyEducationDegreeList().SingleOrDefault(a => a.Key == model.Education)?.Value;
+                        model.PoliticalStatusName = GetData.PoliticalStatusList().SingleOrDefault(a => a.Key == model.PoliticalStatus)?.Value;
+                        model.AccountStatusName = GetData.AccountStatusList().SingleOrDefault(a => a.Key == model.AccountStatus)?.Value;
+                        model.Birthday = !string.IsNullOrEmpty(model.Birthday) ? Convert.ToDateTime(model.Birthday).ToString("yyyy-MM-dd") :"";
                     }
                 }
 
