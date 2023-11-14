@@ -89,6 +89,7 @@ namespace Ideal.Platform.BLL
             code = 11;
             msg = "删除失败！";
             bool flag = false;
+            List<string> sqls = new List<string>();
             Ideal_MenuModel model = new Ideal_MenuModel();
             model = GetMenuDetailByID(MenuID, out code, out msg);
             if (code != 20)
@@ -103,7 +104,19 @@ namespace Ideal.Platform.BLL
                 msg = "当前菜单下含有子菜单,不能删除!";
                 return false;
             }
-            flag = BaseControl.Delete2DB<Ideal_MenuModel>(model, out code, out msg);
+            sqls.Add(BaseControl.GetDeleteFromDBSQL(model));
+            Ideal_RoleMenuBLL ideal_RoleMenuBLL = new Ideal_RoleMenuBLL();
+            List<Ideal_RoleMenuModel> ideal_RoleMenuModels = new List<Ideal_RoleMenuModel>();
+            ideal_RoleMenuModels = ideal_RoleMenuBLL.GetRoleMenuListByMenuID(MenuID, out code, out msg);
+            foreach (var item in ideal_RoleMenuModels)
+            {
+                sqls.Add(BaseControl.GetDeleteFromDBSQL(item));
+            }
+            int count = BaseControl.ExecuteSqlTran(sqls, out code, out msg);
+            if (count > 0)
+            {
+                flag = true;
+            }
             code = flag ? 10 : 11;
             msg = flag ? "删除成功！" : "删除失败！";
             return flag;

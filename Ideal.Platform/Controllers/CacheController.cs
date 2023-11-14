@@ -21,7 +21,7 @@ namespace Ideal.Platform.Controllers
             switch (type)
             {
                 case "sex":
-                     keyValues = GetData.SexList();
+                    keyValues = GetData.SexList();
                     break;
                 case "userStatus":
                     keyValues = GetData.UserStatusList();
@@ -46,6 +46,9 @@ namespace Ideal.Platform.Controllers
                     break;
                 case "accountLevel":
                     keyValues = GetData.AccountLevelList();
+                    break;
+                case "yesOrNo":
+                    keyValues = GetData.YesOrNoList();
                     break;
                 default:
                     break;

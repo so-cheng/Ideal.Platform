@@ -44,7 +44,10 @@ namespace Ideal.Platform.BLL
                 msg = "人员编号不能重复！";
                 return false;
             }
-
+            //model.PoliticalStatus = string.IsNullOrEmpty(model.PoliticalStatus) ? "NULL" : model.PoliticalStatus;
+            //model.Education = string.IsNullOrEmpty(model.Education) ? "NULL" : model.Education;
+            //model.CheckType = string.IsNullOrEmpty(model.CheckType) ? "NULL" : model.CheckType;
+            //model.Sex = string.IsNullOrEmpty(model.Sex) ? "NULL" : model.Sex;
             Ideal_AccountModel account = new Ideal_AccountModel();
             account.AccountName = model.AccountName;
             account.Password = MD5.Encrypt(model.PassWord);
@@ -124,10 +127,7 @@ namespace Ideal.Platform.BLL
             }
 
             List<string> sqlList = new List<string>();
-            Ideal_UserPostModel ideal_UserPostModel = new Ideal_UserPostModel();
-            ideal_UserPostModel = GetUserPostDetailByUserID(UserID, out code, out msg);
             sqlList.Add(BaseControl.GetDeleteFromDBSQL<Ideal_UserModel>(ideal_UserModel));//删除人员
-            sqlList.Add(BaseControl.GetDeleteFromDBSQL<Ideal_UserPostModel>(ideal_UserPostModel));//删除人员岗位
             //删除账号
             Ideal_AccountBLL ideal_AccountBLL = new Ideal_AccountBLL();
             Ideal_AccountModel ideal_AccountModel = ideal_AccountBLL.GetAccountDetailUserID(UserID, out int xcode, out string xmsg);

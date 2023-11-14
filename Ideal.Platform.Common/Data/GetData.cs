@@ -179,5 +179,13 @@ namespace Ideal.Platform.Common.Data
             list.Add(new KeyValue() { Key = AccountLevel.Ordinary, Value = AccountLevel.Ordinary_CH });
             return list;
         }
+        public static List<KeyValue> YesOrNoList()
+        {
+            List<KeyValue> list = new List<KeyValue>();
+            list.Add(new KeyValue() { Key = YesOrNo.Yes, Value = YesOrNo.Yes_CH });
+            list.Add(new KeyValue() { Key = YesOrNo.No, Value = YesOrNo.No_CH });
+            return list;
+        }
+
     }
 }

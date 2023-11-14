@@ -65,6 +65,9 @@ namespace Ideal.Platform.Common.Config
             //账号级别
             keyValues = GetData.AccountLevelList();
             RedisHelper.SetValue((int)RedisType.Cache, "AccountLevel", JsonConvert.SerializeObject(keyValues));
+            //是否
+            keyValues = GetData.YesOrNoList();
+            RedisHelper.SetValue((int)RedisType.Cache, "YesOrNo", JsonConvert.SerializeObject(keyValues));
         }
 
 

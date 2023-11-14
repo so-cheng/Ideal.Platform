@@ -89,6 +89,27 @@ namespace Ideal.Platform.Service
             };
             return rs;
         }
+        /// <summary>
+        /// 重置密码
+        /// </summary>
+        /// <param name="AccountName"></param>
+        /// <returns></returns>
+        public ReturnSummary ResetPassWord(string AccountName)
+        {
+            bool flag = false;
+            int code = 11;
+            string msg = string.Empty;
+            Ideal_AccountBLL ideal_AccountBLL = new Ideal_AccountBLL();
+            flag = ideal_AccountBLL.ResetPassWord(AccountName, out code, out msg);
+
+            ReturnSummary rs = new ReturnSummary()
+            {
+                StatusCode = code,
+                Message = msg,
+                IsSuccess = flag
+            };
+            return rs;
+        }
         #endregion
 
         #region 查询

@@ -30,7 +30,7 @@ namespace Ideal.Platform.Model
         /// <summary>
         /// 
         /// </summary>	
-        [DbFieldAttribute(DbFieldMode.ALL_SAVE)]
+        [DbFieldAttribute(DbFieldMode.PRIMARY_KEY)]
         public string AccountName { get; set; }
         /// <summary>
         /// 

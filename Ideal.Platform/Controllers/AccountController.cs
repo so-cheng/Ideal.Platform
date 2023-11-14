@@ -43,6 +43,18 @@ namespace Ideal.Platform.Controllers
             ReturnSummary returnSummary = ideal_AccountService.DeteleAccount(AccountName);
             return Json(returnSummary);
         }
+        /// <summary>
+        /// 重置密码
+        /// </summary>
+        /// <param name="AccountName"></param>
+        /// <returns></returns>
+        public JsonResult ResetPassWord(string AccountName)
+        {
+            Ideal_AccountService ideal_AccountService = new Ideal_AccountService();
+            ReturnSummary returnSummary = ideal_AccountService.ResetPassWord(AccountName);
+            return Json(returnSummary);
+        }
+        
         #endregion
 
         #region 查询

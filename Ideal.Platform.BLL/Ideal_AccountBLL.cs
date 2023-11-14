@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Ideal.Platform.Common.MD5;
 using Ideal.Platform.Common.Config;
+using System.Reflection;
 
 namespace Ideal.Platform.BLL
 {
@@ -108,6 +109,32 @@ namespace Ideal.Platform.BLL
             msg = flag ? "删除成功！" : "删除失败！";
             return flag;
         }
+        /// <summary>
+        /// 重置密码
+        /// </summary>
+        /// <param name="AccountName"></param>
+        /// <param name="code"></param>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        public bool ResetPassWord(string AccountName, out int code, out string msg)
+        {
+            bool flag = false;
+            code = 11;
+            msg = "重置失败！";
+            Ideal_AccountModel account = new Ideal_AccountModel();
+            account = GetAccountDetailByName(AccountName, out int xcode, out string xmsg);
+            if (xcode == 21)
+            {
+                code = 11;
+                msg = "没有找到此账号！";
+                return false;
+            }
+            account.Password = MD5.Encrypt("123456");
+            flag = BaseControl.UpdateDB<Ideal_AccountModel>(account, out code, out msg);
+            code = flag ? 10 : 11;
+            msg = flag ? "重置成功！" : "重置失败！";
+            return flag;
+        }
 
         #endregion
 
@@ -127,7 +154,7 @@ namespace Ideal.Platform.BLL
             Ideal_AccountModel model = new Ideal_AccountModel();
             PageQueryParam param = new PageQueryParam();
             param.WithNoLock = true;
-            param.SqlBody = " Ideal_Account as a Left Join Ideal_Role as b on a.RoleID = b.RoleID Left Join Ideal_User as c on a.UserID = b.UserID";
+            param.SqlBody = " Ideal_Account as a Left Join Ideal_Role as b on a.RoleID = b.RoleID Left Join Ideal_User as c on a.UserID = c.UserID";
             param.SqlColumn = "a.*,b.RoleName,c.UserName";
             param.SqlWhere = " AND a.AccountName = '" + AccountName + "'";
             model = BaseControl.GetModel<Ideal_AccountModel>(param, out code, out msg);
@@ -147,7 +174,7 @@ namespace Ideal.Platform.BLL
             Ideal_AccountModel model = new Ideal_AccountModel();
             PageQueryParam param = new PageQueryParam();
             param.WithNoLock = true;
-            param.SqlBody = " Ideal_Account as a Left Join Ideal_Role as b on a.RoleID = b.RoleID Left Join Ideal_User as c on a.UserID = b.UserID";
+            param.SqlBody = " Ideal_Account as a Left Join Ideal_Role as b on a.RoleID = b.RoleID Left Join Ideal_User as c on a.UserID = c.UserID";
             param.SqlColumn = "a.*,b.RoleName,c.UserName";
             param.SqlWhere = " AND a.UserID = '" + UserID + "'";
             model = BaseControl.GetModel<Ideal_AccountModel>(param, out code, out msg);

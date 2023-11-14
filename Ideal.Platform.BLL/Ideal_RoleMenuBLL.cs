@@ -94,6 +94,19 @@ namespace Ideal.Platform.BLL
             result = BaseControl.GetAllModels<Ideal_RoleMenuModel>(param, out code, out msg);
             return result;
         }
+
+        public List<Ideal_RoleMenuModel> GetRoleMenuListByMenuID(string MenuID, out int code, out string msg)
+        {
+            code = 21;
+            msg = "查询失败！";
+            List<Ideal_RoleMenuModel> result = new List<Ideal_RoleMenuModel>();
+            PageQueryParam param = new PageQueryParam();
+            param.WithNoLock = true;
+            param.SqlWhere = " AND MenuID = '" + MenuID + "'";
+            result = BaseControl.GetAllModels<Ideal_RoleMenuModel>(param, out code, out msg);
+            return result;
+        }
+
         #endregion
     }
 }
