@@ -187,5 +187,16 @@ namespace Ideal.Platform.Common.Data
             return list;
         }
 
+        public static List<KeyValue> StepTypeList()
+        {
+            List<KeyValue> list = new List<KeyValue>();
+            list.Add(new KeyValue() { Key = StepType.Initiator, Value = StepType.Initiator_CH });
+            list.Add(new KeyValue() { Key = StepType.NodeApproval, Value = StepType.NodeApproval_CH });
+            list.Add(new KeyValue() { Key = StepType.CopyUser, Value = StepType.CopyUser_CH });
+            list.Add(new KeyValue() { Key = StepType.ConditionRout, Value = StepType.ConditionRout_CH });
+            list.Add(new KeyValue() { Key = StepType.Condition, Value = StepType.Condition_CH });
+            return list;
+        }
+
     }
 }
