@@ -1,6 +1,14 @@
+using Ideal.Ideal.Model;
 using Ideal.Platform.Authorization;
 using Ideal.Platform.Common.Config;
+using Ideal.Platform.Common.Data;
 using Ideal.Platform.Job;
+using Ideal.Platform.Model;
+using Ideal.Platform.Service;
+using Microsoft.AspNetCore.Diagnostics;
+using Newtonsoft.Json;
+using System.Net;
+using static System.Net.Mime.MediaTypeNames;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,7 +42,33 @@ app.UseCors(policyName);
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
+    app.UseExceptionHandler("/Error");
+}
+else
+{
+    app.UseExceptionHandler(options =>
+    {
+        options.Run(async context =>
+        {
+            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            context.Response.ContentType = "application/json";
+            var exception = context.Features.Get<IExceptionHandlerFeature>();
+            if (exception != null)
+            {
+                Ideal_LogService ideal_LogService = new Ideal_LogService();
+                Ideal_LogModel model = new Ideal_LogModel();
+                model.Type = LogType.Error;
+                model.StatusCode = context.Response.StatusCode.ToString();
+                model.IP = context.Connection.RemoteIpAddress.ToString();
+                model.PostInterface = context.Request.Path;
+                model.PostType = context.Request.Method.ToString();
+                model.LogName = "系统错误";
+                model.Detail = exception.Error.Message;
+                //model.Creator = context.Request.Headers["userID"];
+                ideal_LogService.InsertLog(model);
+            }
+        });
+    });
 }
 ConfigClass.Inti();
 //TimerJob.StarJob(); 

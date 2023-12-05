@@ -53,6 +53,12 @@ namespace Ideal.Platform.Controllers
                 case "stepType":
                     keyValues = GetData.StepTypeList();
                     break;
+                case "setType":
+                    keyValues = GetData.SetTypeList();
+                    break;
+                case "logType":
+                    keyValues = GetData.LogTypeList();
+                    break;
                 default:
                     break;
             }

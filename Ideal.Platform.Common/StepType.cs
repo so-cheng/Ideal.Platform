@@ -27,12 +27,12 @@ namespace Ideal.Platform.Common
         /// <summary>
         /// 条件路由
         /// </summary>
-        public const string ConditionRout = "3";
+        public const string ConditionRout = "4";
         public const string ConditionRout_CH = "条件路由";
         /// <summary>
         /// 条件
         /// </summary>
-        public const string Condition = "4";
+        public const string Condition = "3";
         public const string Condition_CH = "条件";
     }
 }

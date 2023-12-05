@@ -32,11 +32,6 @@ namespace Ideal.Platform.Model
 		/// </summary>	
 		[DbFieldAttribute(DbFieldMode.ALL_SAVE)]
 		public string DeptCode { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		[DbFieldAttribute(DbFieldMode.ALL_SAVE)]
-		public string CompanyID { get; set; }
         /// <summary>
         /// 
         /// </summary>	

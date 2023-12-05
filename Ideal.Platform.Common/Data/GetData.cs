@@ -171,7 +171,7 @@ namespace Ideal.Platform.Common.Data
             list.Add(new KeyValue() { Key = CheckType.Management, Value = CheckType.Management_CH });
             return list;
         }
-        
+
         public static List<KeyValue> AccountLevelList()
         {
             List<KeyValue> list = new List<KeyValue>();
@@ -195,6 +195,24 @@ namespace Ideal.Platform.Common.Data
             list.Add(new KeyValue() { Key = StepType.CopyUser, Value = StepType.CopyUser_CH });
             list.Add(new KeyValue() { Key = StepType.ConditionRout, Value = StepType.ConditionRout_CH });
             list.Add(new KeyValue() { Key = StepType.Condition, Value = StepType.Condition_CH });
+            return list;
+        }
+        public static List<KeyValue> SetTypeList()
+        {
+            List<KeyValue> list = new List<KeyValue>();
+            list.Add(new KeyValue() { Key = SetType.Dept, Value = SetType.Dept_CH });
+            list.Add(new KeyValue() { Key = SetType.User, Value = SetType.User_CH });
+            return list;
+        }
+
+        public static List<KeyValue> LogTypeList()
+        {
+            List<KeyValue> list = new List<KeyValue>();
+            list.Add(new KeyValue() { Key = LogType.Login, Value = LogType.Login_CH });
+            list.Add(new KeyValue() { Key = LogType.Info, Value = LogType.Info_CH });
+            list.Add(new KeyValue() { Key = LogType.Debug, Value = LogType.Debug_CH });
+            list.Add(new KeyValue() { Key = LogType.Warn, Value = LogType.Warn_CH });
+            list.Add(new KeyValue() { Key = LogType.Error, Value = LogType.Error_CH });
             return list;
         }
 

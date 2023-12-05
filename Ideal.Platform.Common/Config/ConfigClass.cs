@@ -17,8 +17,15 @@ namespace Ideal.Platform.Common.Config
 
         public static string RedisConnectionStr { get; set; }
 
+        /// <summary>
+        /// 缓存集合(调试模式用)
+        /// </summary>
+        public static Dictionary<string, string> Dic_DebugSession { get { return _dic_DebugSession; } }
+
+        private static Dictionary<string, string> _dic_DebugSession = null;
         public static void Inti()
         {
+            _dic_DebugSession = new Dictionary<string, string>();
             string path = Path.Combine(AppContext.BaseDirectory, "", "appsettings.json");
             string appsettingsJsonstr = string.Empty;
             using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))

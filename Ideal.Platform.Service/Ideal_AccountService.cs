@@ -101,7 +101,6 @@ namespace Ideal.Platform.Service
             string msg = string.Empty;
             Ideal_AccountBLL ideal_AccountBLL = new Ideal_AccountBLL();
             flag = ideal_AccountBLL.ResetPassWord(AccountName, out code, out msg);
-
             ReturnSummary rs = new ReturnSummary()
             {
                 StatusCode = code,
