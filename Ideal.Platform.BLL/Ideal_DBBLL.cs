@@ -413,13 +413,12 @@ namespace Ideal.Platform.BLL
                 left join syscomments e on a.cdefault=e.id
                 left join sys.extended_properties   g on a.id=G.major_id and a.colid=g.minor_id  
                 left join sys.extended_properties f on d.id=f.major_id and f.minor_id=0
-                order by a.id,a.colorder
+                order by a.id,a.colorder 
             ";
             DataTable dt = dbUtility.ExecuteScalar(sqlstr, out code, out msg);
             list = BaseControl.ConvertToEntityList<TableFields>(dt);
             return list;
         }
-
 
         #endregion
     }

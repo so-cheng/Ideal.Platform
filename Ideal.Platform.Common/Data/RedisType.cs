@@ -11,6 +11,7 @@ namespace Ideal.Platform.Common.Data
         Authorize = 0,//授权
         Login =1,//登录
         Basics =2,//基础数据
-        Cache =3//缓存字典
+        Cache =3,//缓存字典
+        WeChatToken =4,//微信AccessToken
     }
 }

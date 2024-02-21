@@ -50,9 +50,6 @@ namespace Ideal.Platform.Controllers
                 case "yesOrNo":
                     keyValues = GetData.YesOrNoList();
                     break;
-                case "stepType":
-                    keyValues = GetData.StepTypeList();
-                    break;
                 case "setType":
                     keyValues = GetData.SetTypeList();
                     break;

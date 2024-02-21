@@ -3,7 +3,10 @@ using Ideal.Ideal.WeChat;
 using Ideal.Platform.Authorization;
 using Ideal.Platform.Common;
 using Ideal.Platform.Common.Config;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
+using System.Security.Cryptography.Xml;
 
 namespace Ideal.Platform.Controllers
 {
@@ -46,7 +49,7 @@ namespace Ideal.Platform.Controllers
             if (string.IsNullOrEmpty(token)) return Content("请先设置Token！");
             AuthModel model = new AuthModel();
             //封装参数
-            model.Token = WeChatConfigClass.WeChatToken;//微信公众平台后台设置的Token
+            model.Token = token;
             model.Signature = signature;
             model.Timestamp = timestamp;
             model.Nonce = nonce;
@@ -139,16 +142,28 @@ namespace Ideal.Platform.Controllers
         [NoAuthentiction]
         public void AcceptWeChatToAppHome()
         {
-            var domain = WeChatConfigClass.Domain;
-            var page = "";
+            AuthModel model = new AuthModel();
+            //封装参数
+            model.AppID = WeChatConfigClass.AppID;
+            model.AppSecret = WeChatConfigClass.AppSecret;
+            model.Domain = WeChatConfigClass.Domain;
             //通过page读取RouteViews中的页面路由
-            var redirect_uri = domain + "/WeChat/AppHome";//这里需要完整url地址，对应Controller里面的OAuthController的Callback
-            var scope = "snsapi_userinfo";
-            var state = Math.Abs(DateTime.Now.ToBinary()).ToString();//state保证唯一即可,可以用其他方式生成
-            var weixinOAuth2Url = string.Format(
-                     "https://open.weixin.qq.com/connect/oauth2/authorize?appid={0}&redirect_uri={1}&response_type=code&scope={2}&state={3}#wechat_redirect",
-                      WeChatConfigClass.AppID, redirect_uri, scope, state);
-            Response.Redirect(weixinOAuth2Url);
+            var redirect_uri = WeChatConfigClass.Domain + "/WeChat/AppHome";//这里需要完整url地址，对应Controller里面的OAuthController的Callback
+            model.Redirect_Uri = redirect_uri;
+            OAuth auth = new OAuth(model);
+            ReturnSummary returnSummary = auth.GetWeixinOAuth2Url();
+            if (returnSummary.StatusCode == 10)
+            {
+                Response.Redirect(returnSummary.Data.ToString());
+            }
+            //var domain = WeChatConfigClass.Domain;
+            //var page = "";
+            //var scope = "snsapi_userinfo";
+            //var state = Math.Abs(DateTime.Now.ToBinary()).ToString();//state保证唯一即可,可以用其他方式生成
+            //var weixinOAuth2Url = string.Format(
+            //         "https://open.weixin.qq.com/connect/oauth2/authorize?appid={0}&redirect_uri={1}&response_type=code&scope={2}&state={3}#wechat_redirect",
+            //          WeChatConfigClass.AppID, redirect_uri, scope, state);
+           
         }
         /// <summary>
         /// 通过code获取openid，跳转login页面

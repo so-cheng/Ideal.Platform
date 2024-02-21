@@ -28,7 +28,7 @@ namespace Ideal.Platform.Model
             MenuList = new List<dynamic>(); 
         }
         /// <summary>
-        /// 
+        /// 账号
         /// </summary>	
         [DbFieldAttribute(DbFieldMode.PRIMARY_KEY)]
         public string AccountName { get; set; }
