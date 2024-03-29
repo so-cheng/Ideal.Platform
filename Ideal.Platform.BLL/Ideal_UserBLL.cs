@@ -246,7 +246,7 @@ namespace Ideal.Platform.BLL
             }
             if (!string.IsNullOrEmpty(query.DeptID))
             {
-                param.SqlWhere += " AND a.DeptID = '" + query.DeptID + "'";
+                param.SqlWhere += " AND a.DeptID in (" + query.DeptID + ")";
             }
             if (!string.IsNullOrEmpty(query.Sex))
             {

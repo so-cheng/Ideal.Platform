@@ -64,7 +64,7 @@ else
                 model.PostType = context.Request.Method.ToString();
                 model.LogName = "系统错误";
                 model.Detail = exception.Error.Message;
-                //model.Creator = context.Request.Headers["userID"];
+                model.Creator = context.Request.Headers["userID"];
                 ideal_LogService.InsertLog(model);
             }
         });

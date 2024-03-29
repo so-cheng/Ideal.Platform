@@ -98,7 +98,7 @@ namespace Ideal.Platform.BLL
         {
             bool flag = false;
             code = 11;
-            msg = "修改失败！";
+            msg = "删除失败！";
             Ideal_DeptModel dept = new Ideal_DeptModel();
             dept = GetDeptDetailByID(DeptID, out int xcode, out string xmsg);
             if (xcode != 20)
@@ -220,7 +220,7 @@ namespace Ideal.Platform.BLL
             param.PageIndex = query.PageIndex;
             if (!string.IsNullOrEmpty(query.DeptCode))
             {
-                param.SqlWhere += " AND a.DeptCode" + query.DeptCode;
+                param.SqlWhere += " AND a.DeptCode = '" + query.DeptCode + "'";
             }
             if (!string.IsNullOrEmpty(query.DeptName))
             {
@@ -277,7 +277,7 @@ namespace Ideal.Platform.BLL
                 }
             }
             return listtree;
-        }   
+        }
         #endregion
     }
 }

@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 
@@ -132,6 +133,10 @@ namespace Ideal.Platform.Service
             string msg = string.Empty;
             Ideal_UserBLL ideal_UserBLL = new Ideal_UserBLL();
             PageModel<Ideal_UserModel> modellist = new PageModel<Ideal_UserModel>();
+            if (!string.IsNullOrEmpty(userQuery.DeptID))
+            {
+                userQuery.DeptID = GetDeptIDs(userQuery.DeptID);
+            }
             modellist = ideal_UserBLL.GetUserList(userQuery, out code, out msg);
             List<Ideal_UserModel> list = modellist.PageList;
             if (code == 20)
@@ -141,13 +146,13 @@ namespace Ideal.Platform.Service
                     foreach (var model in list)
                     {
                         model.SexName = GetData.SexList().SingleOrDefault(a => a.Key == model.Sex)?.Value;
-                        model.UserStatusName = GetData.UserStatusList().SingleOrDefault(a => a.Key ==model.UserStatus)?.Value;
+                        model.UserStatusName = GetData.UserStatusList().SingleOrDefault(a => a.Key == model.UserStatus)?.Value;
                         model.CheckTypeName = GetData.CheckTypeList().SingleOrDefault(a => a.Key == model.CheckType)?.Value;
-                        model.IDCardTypeName = GetData.IDCardTypeList().SingleOrDefault(a => a.Key ==model.IDCardType)?.Value;
+                        model.IDCardTypeName = GetData.IDCardTypeList().SingleOrDefault(a => a.Key == model.IDCardType)?.Value;
                         model.EducationName = GetData.MyEducationDegreeList().SingleOrDefault(a => a.Key == model.Education)?.Value;
                         model.PoliticalStatusName = GetData.PoliticalStatusList().SingleOrDefault(a => a.Key == model.PoliticalStatus)?.Value;
                         model.AccountStatusName = GetData.AccountStatusList().SingleOrDefault(a => a.Key == model.AccountStatus)?.Value;
-                        model.Birthday = !string.IsNullOrEmpty(model.Birthday) ? Convert.ToDateTime(model.Birthday).ToString("yyyy-MM-dd") :"";
+                        model.Birthday = !string.IsNullOrEmpty(model.Birthday) ? Convert.ToDateTime(model.Birthday).ToString("yyyy-MM-dd") : "";
                     }
                 }
 
@@ -162,8 +167,10 @@ namespace Ideal.Platform.Service
                 PageIndex = modellist.PageIndex,
                 PageSize = modellist.PageSize
             };
+
             return returnSummary;
         }
+
         /// <summary>
         /// 查询所有人员
         /// </summary>
@@ -201,6 +208,53 @@ namespace Ideal.Platform.Service
             };
             return returnSummary;
         }
+        #endregion
+
+        #region 私有方法
+
+        private string GetDeptIDs(string DeptID)
+        {
+            List<string> strList = new List<string>();
+            string deptIDs = string.Empty;
+            Ideal_DeptBLL bll = new Ideal_DeptBLL();
+            List<Ideal_DeptModel> alldeptList = bll.GetDeptAllList(new DeptQuery(), out int code, out string msg);
+            List<Ideal_DeptModel> list = new List<Ideal_DeptModel>();
+            //list = alldeptList.Where(a => a.ParentDeptID == DeptID).ToList();
+            foreach (var data in alldeptList.Where(a => a.ParentDeptID == DeptID).ToList())
+            {
+                list.Add(data);
+                GetDeptIDs(alldeptList, data, list);
+            }
+
+            if (list.Count > 0)
+            {
+                foreach (var data in list)
+                {
+                    strList.Add("'" + data.DeptID + "'");
+                }
+                deptIDs = string.Join(",", strList);
+            }
+            else
+            {
+                return DeptID;
+            }
+            return deptIDs;
+        }
+
+        private void GetDeptIDs(List<Ideal_DeptModel> alldeptList, Ideal_DeptModel deptID, List<Ideal_DeptModel> deptList)
+        {
+
+            deptList.Add(deptID);
+            List<Ideal_DeptModel> dlist = alldeptList.Where(a => a.ParentDeptID == deptID.DeptID).ToList();
+            if (dlist.Count > 0)
+            {
+                foreach (var data in dlist)
+                {
+                    GetDeptIDs(alldeptList, data, deptList);
+                }
+            }
+        }
+
         #endregion
     }
 }

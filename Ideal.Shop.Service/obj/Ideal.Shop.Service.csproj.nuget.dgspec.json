@@ -1,0 +1,409 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\Git\\Ideal.Platform\\Ideal.Shop.Service\\Ideal.Shop.Service.csproj": {}
+  },
+  "projects": {
+    "E:\\Git\\Ideal.Platform\\Ideal.Platform.Common\\Ideal.Platform.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Git\\Ideal.Platform\\Ideal.Platform.Common\\Ideal.Platform.Common.csproj",
+        "projectName": "Ideal.Platform.Common",
+        "projectPath": "E:\\Git\\Ideal.Platform\\Ideal.Platform.Common\\Ideal.Platform.Common.csproj",
+        "packagesPath": "C:\\Users\\理想再见\\.nuget\\packages\\",
+        "outputPath": "E:\\Git\\Ideal.Platform\\Ideal.Platform.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\理想再见\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "E:\\Git\\Ideal\\Ideal.csproj": {
+                "projectPath": "E:\\Git\\Ideal\\Ideal.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Git\\Ideal.Platform\\Ideal.Platform.Model\\Ideal.Platform.Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Git\\Ideal.Platform\\Ideal.Platform.Model\\Ideal.Platform.Model.csproj",
+        "projectName": "Ideal.Platform.Model",
+        "projectPath": "E:\\Git\\Ideal.Platform\\Ideal.Platform.Model\\Ideal.Platform.Model.csproj",
+        "packagesPath": "C:\\Users\\理想再见\\.nuget\\packages\\",
+        "outputPath": "E:\\Git\\Ideal.Platform\\Ideal.Platform.Model\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\理想再见\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "E:\\Git\\Ideal\\Ideal.csproj": {
+                "projectPath": "E:\\Git\\Ideal\\Ideal.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Git\\Ideal.Platform\\Ideal.Shop.BLL\\Ideal.Shop.BLL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Git\\Ideal.Platform\\Ideal.Shop.BLL\\Ideal.Shop.BLL.csproj",
+        "projectName": "Ideal.Shop.BLL",
+        "projectPath": "E:\\Git\\Ideal.Platform\\Ideal.Shop.BLL\\Ideal.Shop.BLL.csproj",
+        "packagesPath": "C:\\Users\\理想再见\\.nuget\\packages\\",
+        "outputPath": "E:\\Git\\Ideal.Platform\\Ideal.Shop.BLL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\理想再见\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "E:\\Git\\Ideal.Platform\\Ideal.Platform.Common\\Ideal.Platform.Common.csproj": {
+                "projectPath": "E:\\Git\\Ideal.Platform\\Ideal.Platform.Common\\Ideal.Platform.Common.csproj"
+              },
+              "E:\\Git\\Ideal.Platform\\Ideal.Shop\\Ideal.Shop.Model.csproj": {
+                "projectPath": "E:\\Git\\Ideal.Platform\\Ideal.Shop\\Ideal.Shop.Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Git\\Ideal.Platform\\Ideal.Shop.Service\\Ideal.Shop.Service.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Git\\Ideal.Platform\\Ideal.Shop.Service\\Ideal.Shop.Service.csproj",
+        "projectName": "Ideal.Shop.Service",
+        "projectPath": "E:\\Git\\Ideal.Platform\\Ideal.Shop.Service\\Ideal.Shop.Service.csproj",
+        "packagesPath": "C:\\Users\\理想再见\\.nuget\\packages\\",
+        "outputPath": "E:\\Git\\Ideal.Platform\\Ideal.Shop.Service\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\理想再见\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "E:\\Git\\Ideal.Platform\\Ideal.Shop.BLL\\Ideal.Shop.BLL.csproj": {
+                "projectPath": "E:\\Git\\Ideal.Platform\\Ideal.Shop.BLL\\Ideal.Shop.BLL.csproj"
+              },
+              "E:\\Git\\Ideal.Platform\\Ideal.Shop\\Ideal.Shop.Model.csproj": {
+                "projectPath": "E:\\Git\\Ideal.Platform\\Ideal.Shop\\Ideal.Shop.Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Git\\Ideal.Platform\\Ideal.Shop\\Ideal.Shop.Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Git\\Ideal.Platform\\Ideal.Shop\\Ideal.Shop.Model.csproj",
+        "projectName": "Ideal.Shop.Model",
+        "projectPath": "E:\\Git\\Ideal.Platform\\Ideal.Shop\\Ideal.Shop.Model.csproj",
+        "packagesPath": "C:\\Users\\理想再见\\.nuget\\packages\\",
+        "outputPath": "E:\\Git\\Ideal.Platform\\Ideal.Shop\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\理想再见\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "E:\\Git\\Ideal.Platform\\Ideal.Platform.Model\\Ideal.Platform.Model.csproj": {
+                "projectPath": "E:\\Git\\Ideal.Platform\\Ideal.Platform.Model\\Ideal.Platform.Model.csproj"
+              },
+              "E:\\Git\\Ideal\\Ideal.csproj": {
+                "projectPath": "E:\\Git\\Ideal\\Ideal.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Git\\Ideal\\Ideal.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Git\\Ideal\\Ideal.csproj",
+        "projectName": "Ideal",
+        "projectPath": "E:\\Git\\Ideal\\Ideal.csproj",
+        "packagesPath": "C:\\Users\\理想再见\\.nuget\\packages\\",
+        "outputPath": "E:\\Git\\Ideal\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\理想再见\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.6.86, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            },
+            "XAct.Core.PCL": {
+              "target": "Package",
+              "version": "[0.0.5014, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

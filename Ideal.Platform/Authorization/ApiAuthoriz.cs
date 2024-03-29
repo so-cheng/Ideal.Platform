@@ -6,6 +6,8 @@ using Ideal.Platform.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json;
+using System.Text;
+using System.Web;
 
 namespace Ideal.Platform.Authorization
 {
@@ -28,6 +30,7 @@ namespace Ideal.Platform.Authorization
             //获取传输的Authorize
             var authorize = context.HttpContext.Request.Headers["Authorize"];
             var UserID = context.HttpContext.Request.Headers["userID"];
+            model.Creator = UserID;
             if (string.IsNullOrEmpty(UserID))
             {
                 model.Creator = UserID;
@@ -80,7 +83,25 @@ namespace Ideal.Platform.Authorization
                 context.Result = new JsonResult(returnSummary);
                 return;
             }
-            
+
+            if (model.PostInterface == "/Log/GetLogList" || model.PostInterface == "/Cache/GetCache")
+            {
+                return;
+            }
+            if (model.PostType == "GET")
+            {
+                model.Detail = HttpUtility.UrlDecode(context.HttpContext.Request.QueryString.Value);
+            }
+            else
+            {
+                string pa = string.Empty;
+                foreach (var item in context.HttpContext.Request.Form)
+                {
+                    pa += item.Key + "=" + item.Value+"&";
+                }
+                model.Detail = pa;
+            }
+            ideal_LogService.InsertLog(model);
         }
     }
 }

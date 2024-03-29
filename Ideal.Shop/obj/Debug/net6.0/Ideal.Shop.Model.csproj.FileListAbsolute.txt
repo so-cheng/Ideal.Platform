@@ -1,0 +1,17 @@
+E:\Git\Ideal.Platform\Ideal.Shop\bin\Debug\net6.0\Ideal.Shop.Model.deps.json
+E:\Git\Ideal.Platform\Ideal.Shop\bin\Debug\net6.0\Ideal.Shop.Model.dll
+E:\Git\Ideal.Platform\Ideal.Shop\bin\Debug\net6.0\Ideal.Shop.Model.pdb
+E:\Git\Ideal.Platform\Ideal.Shop\bin\Debug\net6.0\Ideal.dll
+E:\Git\Ideal.Platform\Ideal.Shop\bin\Debug\net6.0\Ideal.Platform.Model.dll
+E:\Git\Ideal.Platform\Ideal.Shop\bin\Debug\net6.0\Ideal.pdb
+E:\Git\Ideal.Platform\Ideal.Shop\bin\Debug\net6.0\Ideal.Platform.Model.pdb
+E:\Git\Ideal.Platform\Ideal.Shop\obj\Debug\net6.0\Ideal.Shop.Model.csproj.AssemblyReference.cache
+E:\Git\Ideal.Platform\Ideal.Shop\obj\Debug\net6.0\Ideal.Shop.Model.GeneratedMSBuildEditorConfig.editorconfig
+E:\Git\Ideal.Platform\Ideal.Shop\obj\Debug\net6.0\Ideal.Shop.Model.AssemblyInfoInputs.cache
+E:\Git\Ideal.Platform\Ideal.Shop\obj\Debug\net6.0\Ideal.Shop.Model.AssemblyInfo.cs
+E:\Git\Ideal.Platform\Ideal.Shop\obj\Debug\net6.0\Ideal.Shop.Model.csproj.CoreCompileInputs.cache
+E:\Git\Ideal.Platform\Ideal.Shop\obj\Debug\net6.0\Ideal.Shop.Model.csproj.CopyComplete
+E:\Git\Ideal.Platform\Ideal.Shop\obj\Debug\net6.0\Ideal.Shop.Model.dll
+E:\Git\Ideal.Platform\Ideal.Shop\obj\Debug\net6.0\refint\Ideal.Shop.Model.dll
+E:\Git\Ideal.Platform\Ideal.Shop\obj\Debug\net6.0\Ideal.Shop.Model.pdb
+E:\Git\Ideal.Platform\Ideal.Shop\obj\Debug\net6.0\ref\Ideal.Shop.Model.dll

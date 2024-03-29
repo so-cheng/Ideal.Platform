@@ -26,6 +26,7 @@
     <ProjectReference Include="..\..\Ideal\Ideal.csproj" />
     <ProjectReference Include="..\Ideal.Platform.Common\Ideal.Platform.Common.csproj" />
     <ProjectReference Include="..\Ideal.Platform.Service\Ideal.Platform.Service.csproj" />
+    <ProjectReference Include="..\Ideal.Shop.Service\Ideal.Shop.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>
