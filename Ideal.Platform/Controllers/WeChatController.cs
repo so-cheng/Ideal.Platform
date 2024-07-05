@@ -182,7 +182,7 @@ namespace Ideal.Platform.Controllers
             }
 
             //验证code是否可用
-            string sessionCode = WebCommon.GetSession(HttpContext, "code");
+            string sessionCode = WebCommon.GetSession(HttpContext, "                    code");
             //接收的code和Session就重定向
             if (code == sessionCode)
             {
@@ -197,14 +197,14 @@ namespace Ideal.Platform.Controllers
             {
                 //吧openID存入Session
                 string openID = SailJsonExtention.GetJsonValueByKey(openIDJson, "openId");
-                string access_token = SailJsonExtention.GetJsonValueByKey(openIDJson, "access_token");
-                WebCommon.SetSession(HttpContext, "openId", openID);
+                //string access_token = SailJsonExtention.GetJsonValueByKey(openIDJson, "access_token");
+                WebCommon.SetSession(HttpContext, "openId", openID);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
                 openid = openID;
             }
-            //调用是否使用P7登录
+            //调用是否使用登录
 
             return Redirect("/Login");
 
         }
-    }
+    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 }

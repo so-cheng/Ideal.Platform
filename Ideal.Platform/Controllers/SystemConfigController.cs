@@ -24,7 +24,7 @@ namespace Ideal.Platform.Controllers
         /// <summary>
         /// 详情
         /// </summary>
-        /// <param name="RoleID"></param>
+        /// <param name="SystemConfigID"></param>
         /// <returns></returns>
         [NoAuthentiction]
         public JsonResult GetRoleDetailByID(string SystemConfigID)
